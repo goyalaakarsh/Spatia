@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        insertProducts();
+        // insertProducts();
     }
 
     private void insertProducts() {
