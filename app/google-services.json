@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "739560894106",
+    "project_id": "spatia-2025",
+    "storage_bucket": "spatia-2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739560894106:android:aeece17b141c97f2053923",
+        "android_client_info": {
+          "package_name": "com.android.spatia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA906RaP7ZhNRckl9JcF8MxxuWnrz-qTDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

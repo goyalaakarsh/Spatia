@@ -1,0 +1,242 @@
+[
+    {
+        "id": 1,
+        "name": "Modern Leather Sofa",
+        "description": "A sleek and comfortable leather sofa perfect for contemporary living rooms.",
+        "price": 799.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1550581190-9e5d80d1e0e2"
+    },
+    {
+        "id": 2,
+        "name": "Wooden Coffee Table",
+        "description": "A minimalist wooden coffee table with a natural finish.",
+        "price": 149.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 3,
+        "name": "Velvet Armchair",
+        "description": "A luxurious velvet armchair in a deep blue shade.",
+        "price": 249.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1519961655809-2fa5a7a829d8"
+    },
+    {
+        "id": 4,
+        "name": "Queen Size Bed",
+        "description": "A sturdy wooden bed frame with a modern design.",
+        "price": 599.99,
+        "category": "Bedroom",
+        "imageUrl": "https://images.unsplash.com/photo-1505693416388-acff0d5d01f5"
+    },
+    {
+        "id": 5,
+        "name": "Nightstand",
+        "description": "A compact nightstand with a single drawer and shelf.",
+        "price": 89.99,
+        "category": "Bedroom",
+        "imageUrl": "https://images.unsplash.com/photo-1611262588491-4b282d9e0738"
+    },
+    {
+        "id": 6,
+        "name": "Dining Table Set",
+        "description": "A 6-seater dining table with matching chairs.",
+        "price": 899.99,
+        "category": "Dining Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154526-990dced4363a"
+    },
+    {
+        "id": 7,
+        "name": "Bar Stool",
+        "description": "A stylish bar stool with a metal frame and cushioned seat.",
+        "price": 79.99,
+        "category": "Dining Room",
+        "imageUrl": "https://images.unsplash.com/photo-1598306218378-9e899e175139"
+    },
+    {
+        "id": 8,
+        "name": "Bookshelf",
+        "description": "A tall wooden bookshelf with five shelves.",
+        "price": 199.99,
+        "category": "Office",
+        "imageUrl": "https://images.unsplash.com/photo-1592495991373-8d3a56b5f4e4"
+    },
+    {
+        "id": 9,
+        "name": "Desk Chair",
+        "description": "An ergonomic chair with adjustable height and lumbar support.",
+        "price": 129.99,
+        "category": "Office",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 10,
+        "name": "TV Stand",
+        "description": "A modern TV stand with open shelves and cable management.",
+        "price": 159.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 11,
+        "name": "Recliner",
+        "description": "A plush recliner with a footrest for ultimate relaxation.",
+        "price": 349.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1579656592043-aabebc073b9f"
+    },
+    {
+        "id": 12,
+        "name": "Wardrobe",
+        "description": "A spacious wardrobe with sliding doors and mirror.",
+        "price": 499.99,
+        "category": "Bedroom",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 13,
+        "name": "Side Table",
+        "description": "A small round side table with a marble top.",
+        "price": 99.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 14,
+        "name": "Dresser",
+        "description": "A six-drawer dresser with a sleek white finish.",
+        "price": 299.99,
+        "category": "Bedroom",
+        "imageUrl": "https://images.unsplash.com/photo-1611262588491-4b282d9e0738"
+    },
+    {
+        "id": 15,
+        "name": "Pendant Lamp",
+        "description": "A modern pendant lamp with a geometric design.",
+        "price": 69.99,
+        "category": "Lighting",
+        "imageUrl": "https://images.unsplash.com/photo-1513506003901-1e6a229e77f8"
+    },
+    {
+        "id": 16,
+        "name": "Sectional Sofa",
+        "description": "A spacious sectional sofa with soft fabric upholstery.",
+        "price": 999.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1550581190-9e5d80d1e0e2"
+    },
+    {
+        "id": 17,
+        "name": "Console Table",
+        "description": "A narrow console table for entryways or hallways.",
+        "price": 139.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 18,
+        "name": "Bunk Bed",
+        "description": "A sturdy bunk bed perfect for kids' rooms.",
+        "price": 399.99,
+        "category": "Bedroom",
+        "imageUrl": "https://images.unsplash.com/photo-1505693416388-acff0d5d01f5"
+    },
+    {
+        "id": 19,
+        "name": "Ottoman",
+        "description": "A cushioned ottoman that doubles as storage.",
+        "price": 89.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 20,
+        "name": "Dining Chair",
+        "description": "A set of two upholstered dining chairs.",
+        "price": 129.99,
+        "category": "Dining Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154526-990dced4363a"
+    },
+    {
+        "id": 21,
+        "name": "Floor Lamp",
+        "description": "A tall floor lamp with an adjustable arm.",
+        "price": 79.99,
+        "category": "Lighting",
+        "imageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+    },
+    {
+        "id": 22,
+        "name": "Office Desk",
+        "description": "A spacious desk with drawers and cable management.",
+        "price": 249.99,
+        "category": "Office",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 23,
+        "name": "Rocking Chair",
+        "description": "A classic wooden rocking chair for porches or nurseries.",
+        "price": 179.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1579656592043-aabebc073b9f"
+    },
+    {
+        "id": 24,
+        "name": "Mattress",
+        "description": "A memory foam mattress for a comfortable sleep.",
+        "price": 399.99,
+        "category": "Bedroom",
+        "imageUrl": "https://images.unsplash.com/photo-1505693416388-acff0d5d01f5"
+    },
+    {
+        "id": 25,
+        "name": "Kitchen Island",
+        "description": "A mobile kitchen island with storage and countertop.",
+        "price": 349.99,
+        "category": "Kitchen",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 26,
+        "name": "Accent Chair",
+        "description": "A bold accent chair with a unique pattern.",
+        "price": 199.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1519961655809-2fa5a7a829d8"
+    },
+    {
+        "id": 27,
+        "name": "Wall Shelf",
+        "description": "A set of three floating wall shelves.",
+        "price": 59.99,
+        "category": "Office",
+        "imageUrl": "https://images.unsplash.com/photo-1592495991373-8d3a56b5f4e4"
+    },
+    {
+        "id": 28,
+        "name": "Chaise Lounge",
+        "description": "A luxurious chaise lounge for ultimate comfort.",
+        "price": 499.99,
+        "category": "Living Room",
+        "imageUrl": "https://images.unsplash.com/photo-1550581190-9e5d80d1e0e2"
+    },
+    {
+        "id": 29,
+        "name": "Bar Cabinet",
+        "description": "A stylish bar cabinet with wine storage.",
+        "price": 299.99,
+        "category": "Dining Room",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        "id": 30,
+        "name": "Table Lamp",
+        "description": "A ceramic table lamp with a fabric shade.",
+        "price": 49.99,
+        "category": "Lighting",
+        "imageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+    }
+]
