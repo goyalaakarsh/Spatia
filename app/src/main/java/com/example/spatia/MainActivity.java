@@ -6,12 +6,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spatia.activities.AuthActivity;
+import com.example.spatia.activities.ProductsActivity;
 import com.example.spatia.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.gson.Gson;
+
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,20 +34,22 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // Check if user is signed in
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
         if (currentUser == null) {
-            // No user is signed in, launch AuthActivity
             Intent intent = new Intent(this, AuthActivity.class);
             startActivity(intent);
-            finish(); // Close MainActivity
+            finish(); 
         } else {
-            // User is signed in, continue with MainActivity
+            Intent intent = new Intent(this, ProductsActivity.class);
+            startActivity(intent);
+            finish(); 
             Toast.makeText(this, "Welcome back, " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
-            // insertProducts();
         }
+        // insertProducts();
     }
 
+    // Inserts products from JSON file into Firestore collection "products" (not supposed to be used everytime)
     private void insertProducts() {
         try {
             InputStream inputStream = getAssets().open("products.json");

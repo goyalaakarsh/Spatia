@@ -1,6 +1,7 @@
 package com.example.spatia.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -221,18 +222,22 @@ public class AuthActivity extends Activity {
     }
 
     private void reload() {
-        // For testing, simply display a message
         Toast.makeText(AuthActivity.this, "User already signed in",
                 Toast.LENGTH_SHORT).show();
-        // In a real app, you would navigate to the main activity
+                
+        Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+        startActivity(intent);
+        finish(); 
     }
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            // User is signed in, show a success message
             Toast.makeText(AuthActivity.this, "User: " + user.getEmail(), 
                     Toast.LENGTH_SHORT).show();
-            // In a real app, you would navigate to the main activity
+            
+            Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+            startActivity(intent);
+            finish(); 
         }
     }
 }
