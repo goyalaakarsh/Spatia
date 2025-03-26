@@ -208,7 +208,6 @@ public class AuthActivity extends Activity {
                                     Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(AuthActivity.this, "Authentication failed: " +
                                     task.getException().getMessage(),
