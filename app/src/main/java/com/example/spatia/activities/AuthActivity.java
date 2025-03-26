@@ -16,20 +16,23 @@ import com.example.spatia.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.example.spatia.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AuthActivity extends Activity {
 
     private static final String TAG = "EmailPassword";
     private FirebaseAuth mAuth;
-    
+    private FirebaseFirestore db;
+
     // UI elements
     private EditText emailField;
     private EditText passwordField;
     private Button actionButton;
     private TextView switchAuthMode;
-    
+
     // To keep track of whether we're in login or signup mode
     private boolean isLoginMode = true;
 
@@ -38,7 +41,8 @@ public class AuthActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-        
+        db = FirebaseFirestore.getInstance();
+
         // Start with login view
         showLoginView();
     }
@@ -46,26 +50,26 @@ public class AuthActivity extends Activity {
     private void showLoginView() {
         setContentView(R.layout.login);
         isLoginMode = true;
-        
+
         // Initialize UI elements
         emailField = findViewById(R.id.loginEmail);
         passwordField = findViewById(R.id.loginPassword);
         actionButton = findViewById(R.id.loginButton);
         switchAuthMode = findViewById(R.id.switchToSignup);
-        
+
         // Set button click listener
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailField.getText().toString();
                 String password = passwordField.getText().toString();
-                
+
                 if (validateForm(email, password)) {
                     signIn(email, password);
                 }
             }
         });
-        
+
         // Set switch mode listener
         switchAuthMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,30 +78,30 @@ public class AuthActivity extends Activity {
             }
         });
     }
-    
+
     private void showSignupView() {
         setContentView(R.layout.signup);
         isLoginMode = false;
-        
+
         // Initialize UI elements
         emailField = findViewById(R.id.signupEmail);
         passwordField = findViewById(R.id.signupPassword);
         actionButton = findViewById(R.id.signupButton);
         switchAuthMode = findViewById(R.id.switchToLogin);
-        
+
         // Set button click listener
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailField.getText().toString();
                 String password = passwordField.getText().toString();
-                
+
                 if (validateForm(email, password)) {
                     createAccount(email, password);
                 }
             }
         });
-        
+
         // Set switch mode listener
         switchAuthMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +110,10 @@ public class AuthActivity extends Activity {
             }
         });
     }
-    
+
     private boolean validateForm(String email, String password) {
         boolean valid = true;
-        
+
         if (email.isEmpty()) {
             emailField.setError("Email is required");
             valid = false;
@@ -119,7 +123,7 @@ public class AuthActivity extends Activity {
         } else {
             emailField.setError(null);
         }
-        
+
         if (password.isEmpty()) {
             passwordField.setError("Password is required");
             valid = false;
@@ -129,7 +133,7 @@ public class AuthActivity extends Activity {
         } else {
             passwordField.setError(null);
         }
-        
+
         return valid;
     }
 
@@ -147,26 +151,41 @@ public class AuthActivity extends Activity {
     private void createAccount(String email, String password) {
         // Show loading state
         actionButton.setEnabled(false);
-        
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             updateUI(user);
                             sendEmailVerification();
-                            Toast.makeText(AuthActivity.this, "Account created successfully!",
-                                    Toast.LENGTH_SHORT).show();
+                            if (firebaseUser != null) {
+                                User user = new User(firebaseUser.getUid(), email);
+                                db.collection("users")
+                                        .document(firebaseUser.getUid())
+                                        .set(user)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Toast.makeText(AuthActivity.this, "Account created successfully!",
+                                                    Toast.LENGTH_SHORT).show();
+
+                                            Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Toast.makeText(AuthActivity.this, "Failed to save user: " + e.getMessage(),
+                                                    Toast.LENGTH_LONG).show();
+                                        });
+                            }
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(AuthActivity.this, "Authentication failed: " + 
+                            Toast.makeText(AuthActivity.this, "Authentication failed: " +
                                     task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-                        
+
                         actionButton.setEnabled(true);
                     }
                 });
@@ -176,7 +195,7 @@ public class AuthActivity extends Activity {
     private void signIn(String email, String password) {
         // Show loading state
         actionButton.setEnabled(false);
-        
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -191,12 +210,12 @@ public class AuthActivity extends Activity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(AuthActivity.this, "Authentication failed: " + 
+                            Toast.makeText(AuthActivity.this, "Authentication failed: " +
                                     task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-                        
+
                         actionButton.setEnabled(true);
                     }
                 });
@@ -209,7 +228,7 @@ public class AuthActivity extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(AuthActivity.this, 
+                            Toast.makeText(AuthActivity.this,
                                     "Verification email sent to " + user.getEmail(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
@@ -224,20 +243,20 @@ public class AuthActivity extends Activity {
     private void reload() {
         Toast.makeText(AuthActivity.this, "User already signed in",
                 Toast.LENGTH_SHORT).show();
-                
+
         Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
         startActivity(intent);
-        finish(); 
+        finish();
     }
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            Toast.makeText(AuthActivity.this, "User: " + user.getEmail(), 
+            Toast.makeText(AuthActivity.this, "User: " + user.getEmail(),
                     Toast.LENGTH_SHORT).show();
-            
+
             Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
             startActivity(intent);
-            finish(); 
+            finish();
         }
     }
 }

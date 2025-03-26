@@ -7,57 +7,43 @@ import com.google.gson.annotations.SerializedName;
  */
 public class User {
     @SerializedName("id")
-    private long id;
+    private String id;
     
-    @SerializedName("username")
-    private String username;
+    @SerializedName("name")
+    private String name;
     
     @SerializedName("email")
     private String email;
     
-    @SerializedName("firstName")
-    private String firstName;
-    
-    @SerializedName("lastName")
-    private String lastName;
-    
     /**
      * Full constructor
      */
-    public User(long id, String username, String email, String firstName, String lastName) {
+    public User(String id, String name, String email) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
     
-    /**
-     * Constructor with fewer parameters
-     */
-    public User(long id, String username, String email) {
+    public User(String id, String name) {
         this.id = id;
-        this.username = username;
-        this.email = email;
-        this.firstName = "";
-        this.lastName = "";
+        this.name = name;
     }
     
     // Getters and setters
-    public long getId() {
+    public String getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
     
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
     
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
     
     public String getEmail() {
@@ -66,28 +52,5 @@ public class User {
     
     public void setEmail(String email) {
         this.email = email;
-    }
-    
-    public String getFirstName() {
-        return firstName;
-    }
-    
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    
-    public String getLastName() {
-        return lastName;
-    }
-    
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    
-    /**
-     * Get the full name (first + last)
-     */
-    public String getFullName() {
-        return firstName + " " + lastName;
     }
 }
