@@ -30,6 +30,9 @@
         <activity
             android:name=".activities.ProductsActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

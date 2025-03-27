@@ -158,8 +158,8 @@ public class AuthActivity extends Activity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                            updateUI(firebaseUser);
-                            sendEmailVerification();
+                            // updateUI(firebaseUser);
+                            // sendEmailVerification();
                             if (firebaseUser != null) {
                                 User user = new User(firebaseUser.getUid(), email);
                                 db.collection("users")
@@ -169,7 +169,7 @@ public class AuthActivity extends Activity {
                                             Toast.makeText(AuthActivity.this, "Account created successfully!",
                                                     Toast.LENGTH_SHORT).show();
 
-                                            Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+                                            Intent intent = new Intent(AuthActivity.this, ProfileActivity.class);
                                             startActivity(intent);
                                             finish();
                                         })
@@ -243,7 +243,7 @@ public class AuthActivity extends Activity {
         Toast.makeText(AuthActivity.this, "User already signed in",
                 Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+        Intent intent = new Intent(AuthActivity.this, ProfileActivity.class);
         startActivity(intent);
         finish();
     }

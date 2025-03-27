@@ -17,20 +17,31 @@ public class User {
 
     @SerializedName("address")
     private String address;
+
+    @SerializedName("phone")
+    private String phone;
+
+    // Required empty constructor for Firestore
+    public User() {
+    }
     
     /**
      * Full constructor
      */
-    public User(String id, String name, String email, String address) {
+    public User(String id, String name, String email, String address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
+        this.phone = phone;
     }
     
     public User(String id, String email) {
         this.id = id;
         this.email = email;
+        this.name = "";
+        this.phone = "";
+        this.address = "";
     }
     
     // Getters and setters
@@ -64,5 +75,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

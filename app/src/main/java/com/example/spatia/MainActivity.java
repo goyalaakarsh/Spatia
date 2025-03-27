@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spatia.activities.AuthActivity;
+import com.example.spatia.activities.ProfileActivity;
 import com.example.spatia.activities.ProductsActivity;
 import com.example.spatia.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,7 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.gson.Gson;
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); 
         } else {
-            Intent intent = new Intent(this, ProductsActivity.class);
+            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
             finish(); 
             Toast.makeText(this, "Welcome back, " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
