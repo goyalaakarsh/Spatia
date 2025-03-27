@@ -158,7 +158,7 @@ public class AuthActivity extends Activity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                            updateUI(user);
+                            updateUI(firebaseUser);
                             sendEmailVerification();
                             if (firebaseUser != null) {
                                 User user = new User(firebaseUser.getUid(), email);

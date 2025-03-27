@@ -42,7 +42,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = productList.get(position);
         
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(currencyFormatter.format(product.getPrice()));
+        holder.productPrice.setText("₹" + (product.getPrice()));
         holder.productCategory.setText(product.getCategory());
         
         Glide.with(context)
