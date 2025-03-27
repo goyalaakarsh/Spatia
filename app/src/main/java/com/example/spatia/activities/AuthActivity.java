@@ -253,9 +253,7 @@ public class AuthActivity extends Activity {
             Toast.makeText(AuthActivity.this, "User: " + user.getEmail(),
                     Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
-            startActivity(intent);
-            finish();
+            setContentView(R.layout.temp_navigation);
         }
     }
 }
