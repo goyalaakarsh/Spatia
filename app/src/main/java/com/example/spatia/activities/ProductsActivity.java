@@ -55,7 +55,6 @@ public class ProductsActivity extends AppCompatActivity {
         loadProducts();
     }
     
-    // Add options menu for profile
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.products_menu, menu);
@@ -66,6 +65,10 @@ public class ProductsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.menu_cart) {
+            Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
             return true;
         }

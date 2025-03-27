@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spatia.activities.AuthActivity;
+import com.example.spatia.activities.CartActivity;
 import com.example.spatia.activities.ProfileActivity;
 import com.example.spatia.activities.ProductsActivity;
 import com.example.spatia.model.Product;
@@ -22,7 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
