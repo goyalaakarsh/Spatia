@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
+        // Enable up navigation/back button in action bar
+        // if (getSupportActionBar() != null) {
+        //     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //     getSupportActionBar().setDisplayShowHomeEnabled(true);
+        // }
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser == null) {
@@ -41,12 +47,75 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); 
         } else {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-            finish(); 
+            setContentView(R.layout.temp_navigation);
             Toast.makeText(this, "Welcome back, " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+            
+            // Set up button click listeners
+            setupNavigationButtons();
         }
         // insertProducts();
+    }
+    
+    // Handle back button click in the action bar
+    // @Override
+    // public boolean onSupportNavigateUp() {
+    //     onBackPressed();
+    //     return true;
+    // }
+    
+    private void setupNavigationButtons() {
+        // Profile button
+        findViewById(R.id.btnProfile).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(intent);
+        });
+        
+        // Cart button
+        findViewById(R.id.btnCart).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+        
+        // Products button
+        findViewById(R.id.btnProducts).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ProductsActivity.class);
+            startActivity(intent);
+        });
+        
+        // Home button (stays in MainActivity)
+        findViewById(R.id.btnHome).setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "You are already at Home", Toast.LENGTH_SHORT).show();
+        });
+        
+        // Auth button
+        findViewById(R.id.btnAuth).setOnClickListener(v -> {
+            // Sign out if user is logged in
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        
+        // Handle other buttons as needed
+        handleOtherButtons();
+    }
+    
+    private void handleOtherButtons() {
+        // Search button
+        findViewById(R.id.btnSearch).setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "Search feature coming soon", Toast.LENGTH_SHORT).show();
+        });
+        
+        // Orders button
+        findViewById(R.id.btnOrders).setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "Orders feature coming soon", Toast.LENGTH_SHORT).show();
+        });
+        
+        // Settings button
+        findViewById(R.id.btnSettings).setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "Settings feature coming soon", Toast.LENGTH_SHORT).show();
+        });
     }
 
     // Inserts products from JSON file into Firestore collection "products" (not supposed to be used everytime)
