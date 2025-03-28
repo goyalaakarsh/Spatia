@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="#F9F9F9"
+    android:padding="8dp">
+
+    <!-- Product Image -->
+    <View
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="#E0E0E0"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qty: 1"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:layout_marginTop="2dp"/>
+
+        <!-- Quantity Controls -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageButton
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/circle_button_background"
+                android:src="@drawable/ic_remove"
+                android:contentDescription="Decrease"
+                android:scaleType="centerInside"
+                app:tint="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="8dp"/>
+
+            <ImageButton
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/circle_button_background"
+                android:src="@drawable/ic_add"
+                android:contentDescription="Increase"
+                android:scaleType="centerInside"
+                app:tint="#FFFFFF"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Remove & Price -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/circle_button_background"
+            android:src="@drawable/ic_close"
+            android:contentDescription="Remove"
+            android:scaleType="centerInside"
+            app:tint="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$599"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#228B22"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</LinearLayout>

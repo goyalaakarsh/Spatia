@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spatia App Navigation"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Profile Activity -->
+        <Button
+            android:id="@+id/btnProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Cart Activity -->
+        <Button
+            android:id="@+id/btnCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shopping Cart"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Products Activity -->
+        <Button
+            android:id="@+id/btnProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Products"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Home Activity -->
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Search Activity -->
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Orders Activity -->
+        <Button
+            android:id="@+id/btnOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Orders"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Settings Activity -->
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Login/Logout -->
+        <Button
+            android:id="@+id/btnAuth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login/Logout"
+            style="@style/PrimaryButton"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginVertical="16dp" />
+
+        <!-- App Info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spatia App - Navigation Helper"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

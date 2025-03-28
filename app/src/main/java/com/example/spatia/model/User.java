@@ -21,19 +21,19 @@ public class User {
     @SerializedName("phone")
     private String phone;
 
-    // Required empty constructor for Firestore
+    @SerializedName("profileImageUrl")
+    private String profileImageUrl;
+
     public User() {
     }
-    
-    /**
-     * Full constructor
-     */
+
     public User(String id, String name, String email, String address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        this.profileImageUrl = "";
     }
     
     public User(String id, String email) {
@@ -42,6 +42,7 @@ public class User {
         this.name = "";
         this.phone = "";
         this.address = "";
+        this.profileImageUrl = "";
     }
     
     // Getters and setters
@@ -83,5 +84,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 }
