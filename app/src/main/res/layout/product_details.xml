@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
+    <include layout="@layout/navbar" />
+
     <!-- Product Image (40% of screen) -->
     <ImageView
         android:id="@+id/product_image"

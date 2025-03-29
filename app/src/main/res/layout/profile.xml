@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <include layout="@layout/navbar" />
+
     <TextView
         android:id="@+id/profileTitle"
         android:layout_width="wrap_content"

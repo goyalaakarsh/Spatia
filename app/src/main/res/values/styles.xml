@@ -29,4 +29,10 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="cornerRadius">8dp</item>
     </style>
+
+    <!-- Add this to your styles.xml file -->
+    <style name="Theme.Spatia.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
