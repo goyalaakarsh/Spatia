@@ -10,14 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Back Arrow -->
-        <ImageView
-            android:id="@+id/back_arrow"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_gravity="start"
-            android:layout_marginBottom="16dp" />
+        <include layout="@layout/navbar" />
 
         <!-- Title -->
         <TextView

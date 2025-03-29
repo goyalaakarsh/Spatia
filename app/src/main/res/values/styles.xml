@@ -10,11 +10,7 @@
         <!-- Status bar color -->
         <item name="android:statusBarColor">@color/primary_dark</item>
     </style>
-    
-    <style name="MainFont">
-        <item name="android:fontFamily">@fonts/dmsans</item>
-    </style>
-    
+
     <style name="CounterButton">
         <item name="android:layout_width">25dp</item>
         <item name="android:layout_height">25dp</item>
@@ -44,5 +40,9 @@
         <item name="android:textSize">18sp</item>
         <item name="cornerRadius">32dp</item>
         <item name="android:textAllCaps">false</item>
+    <!-- Add this to your styles.xml file -->
+    <style name="Theme.Spatia.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

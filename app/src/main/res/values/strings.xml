@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">spatia</string>
+    <string name="navbar_title">Spatia</string>
 </resources>
