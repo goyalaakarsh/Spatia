@@ -10,11 +10,7 @@
         <!-- Status bar color -->
         <item name="android:statusBarColor">@color/primary_dark</item>
     </style>
-    
-    <style name="MainFont">
-        <item name="android:fontFamily">@fonts/dmsans</item>
-    </style>
-    
+
     <style name="CounterButton">
         <item name="android:layout_width">25dp</item>
         <item name="android:layout_height">25dp</item>

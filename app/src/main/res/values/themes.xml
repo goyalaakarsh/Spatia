@@ -13,5 +13,6 @@
         
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:fontFamily">@font/dmsans</item>
     </style>
 </resources>
