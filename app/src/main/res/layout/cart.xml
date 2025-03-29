@@ -49,42 +49,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp" />
 
-        <!-- Total Price Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total:"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/cartTotalPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$0.00"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#228B22" />
-        </LinearLayout>
-
-        <!-- Checkout Button -->
-        <Button
-            android:id="@+id/checkoutButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Checkout"
-            style="@style/PrimaryButton"
-            android:layout_marginBottom="24dp" />
-
         <!-- Recommended Section -->
         <TextView
             android:layout_width="wrap_content"
@@ -119,8 +83,58 @@
                     android:layout_marginEnd="12dp" />
 
                 <!-- Add more cards if needed -->
+
             </LinearLayout>
+
         </HorizontalScrollView>
 
+        <!-- Total Price & Swipe Checkout Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp">
+
+            <!-- Total Price Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textSize="16sp"
+                android:textColor="#888888"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/cartTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$1,198"
+                android:textSize="20sp"
+                android:textColor="#146C43"
+                android:textStyle="bold"
+                android:layout_marginEnd="16dp" />
+
+            <!-- Swipe to Checkout Button -->
+            <TextView
+                android:id="@+id/swipeToCheckout"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Swipe to checkout →"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:background="#146C43"
+                android:padding="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

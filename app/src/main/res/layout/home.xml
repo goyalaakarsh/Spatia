@@ -7,9 +7,8 @@
     android:background="#FFFFFF"
     android:padding="12dp">
 
-
     <include layout="@layout/navbar" />
-    
+
     <!-- App Name -->
     <TextView
         android:id="@+id/logoText"
@@ -49,17 +48,203 @@
         android:id="@+id/searchBar"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/search_bar_background"
-        android:hint="What are you looking for?"
-        android:textColorHint="#888888"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="10dp"
+        android:hint="What are you looking for?"
+        android:inputType="text"
         android:paddingStart="40dp"
         android:paddingEnd="16dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/logoText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="#888888"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoText" />
 
+    <!-- Hot Deals Text -->
+    <TextView
+        android:id="@+id/hotDealsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hot deals"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        android:layout_marginTop="16dp" />
+
+    <!-- Offer Container -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/offerCard"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hotDealsText"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F5F5">
+
+            <!-- Placeholder for Image -->
+            <View
+                android:id="@+id/blankImageContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="#E0E0E0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"/>
+
+            <!-- Offer Text -->
+            <TextView
+                android:id="@+id/offerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Up to 50% off\n on your 1st order"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Categories Section -->
+    <TextView
+        android:id="@+id/categoriesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categories"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/offerCard"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/categoriesSeeAllButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See all"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/categoriesText"/>
+
+    <HorizontalScrollView
+        android:id="@+id/categoriesScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/categoriesText"
+        android:layout_marginTop="12dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Placeholder Circular Views -->
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_placeholder" />
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_placeholder" />
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_placeholder" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Featured Section -->
+    <TextView
+        android:id="@+id/featuredText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Featured"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoriesScrollView"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/featuredSeeAllButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See all"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/featuredText"/>
+
+    <HorizontalScrollView
+        android:id="@+id/featuredScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/featuredText"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/featuredProductsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="150sp"
+            android:orientation="horizontal">
+
+            <!-- Include product items here -->
+            <include layout="@layout/product_card" />
+            <include layout="@layout/product_card" />
+            <include layout="@layout/product_card" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Popular Section -->
+    <TextView
+        android:id="@+id/popularText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/featuredScrollView"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/popularSeeAllButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See all"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/popularText"/>
+
+    <HorizontalScrollView
+        android:id="@+id/popularScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/popularText"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/popularProductsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="150sp"
+            android:orientation="horizontal">
+
+            <!-- Include product items here -->
+            <include layout="@layout/product_card" />
+            <include layout="@layout/product_card" />
+            <include layout="@layout/product_card" />
+        </LinearLayout>
+    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
