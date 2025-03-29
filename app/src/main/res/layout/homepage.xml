@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/spatia_background"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
@@ -43,7 +43,7 @@
         android:padding="24dp">
 
         <EditText
-            android:id="@+id/loginEmail"
+            android:id="@+id/SignUpEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
@@ -59,7 +59,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/loginPassword"
+            android:id="@+id/SignUpPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
@@ -85,15 +85,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Didn't have any account? "
+                android:text="Already have an account ? "
                 android:textColor="@android:color/white"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/sign_up_text"
+                android:id="@+id/log_in_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:text="Log In"
                 android:textColor="#4CAF50"
                 android:textSize="17sp"
                 android:clickable="true"
@@ -107,7 +107,7 @@
         <Button
             android:id="@+id/SignupButton"
             style="@style/rounded_corner_button"
-            android:text="Log In"/>
+            android:text="Register" />
 
     </LinearLayout>
 </LinearLayout>
