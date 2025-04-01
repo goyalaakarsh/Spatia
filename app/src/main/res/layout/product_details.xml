@@ -17,8 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/placeholder_image" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- Guideline at 40% height -->
     <androidx.constraintlayout.widget.Guideline
