@@ -10,4 +10,6 @@
     <color name="pri_yellow">#FFD700</color>
     <color name="dark_grey">#555555</color>
     <color name="highlight">#AAF6D9</color>
+    <color name="green_indicator">#4CAF50</color>
+    <color name="gray_indicator">#88888888</color>
 </resources>
