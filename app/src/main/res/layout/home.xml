@@ -156,9 +156,9 @@
             android:orientation="horizontal">
 
             <!-- Placeholder Circular Views -->
-            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_placeholder" />
-            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_placeholder" />
-            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_placeholder" />
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_background" />
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_background" />
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circle_background" />
         </LinearLayout>
     </HorizontalScrollView>
 

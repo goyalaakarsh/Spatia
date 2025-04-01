@@ -70,7 +70,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         recyclerView = findViewById(R.id.cartRecyclerView);
         totalPriceTextView = findViewById(R.id.cartTotalPrice);
         emptyCartTextView = findViewById(R.id.emptyCartText);
-        checkoutButton = findViewById(R.id.checkoutButton);
+        //checkoutButton = findViewById(R.id.checkoutButton);
         progressBar = findViewById(R.id.cartProgressBar);
 
         cartItems = new ArrayList<>();
