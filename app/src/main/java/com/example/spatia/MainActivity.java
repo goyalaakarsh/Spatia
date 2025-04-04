@@ -9,6 +9,8 @@ import com.example.spatia.activities.AuthActivity;
 import com.example.spatia.activities.CartActivity;
 import com.example.spatia.activities.ProfileActivity;
 import com.example.spatia.activities.ProductsActivity;
+import com.example.spatia.activities.TempNavigationActivity;
+import com.example.spatia.activities.WelcomeActivity;
 import com.example.spatia.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,17 +44,19 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (currentUser == null) {
-            Intent intent = new Intent(this, AuthActivity.class);
-            startActivity(intent);
-            finish(); 
-        } else {
-            setContentView(R.layout.temp_navigation);
-            Toast.makeText(this, "Welcome back, " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
-            
-            // Set up button click listeners
-            setupNavigationButtons();
-        }
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        finish();
+
+//        if (currentUser == null) {
+//            Intent intent = new Intent(this, AuthActivity.class);
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            setContentView(R.layout.temp_navigation);
+//            Toast.makeText(this, "Welcome back, " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+//
+//        }
         // insertProducts();
     }
     

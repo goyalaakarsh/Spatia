@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.spatia.R;
 import com.example.spatia.adapters.ProductAdapter;
+//import com.example.spatia.ar.ArDemoUtils;
 import com.example.spatia.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +37,7 @@ public class ProductsActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private ProgressBar progressBar;
     private TextView noProductsText;
+    private boolean isDebugMode = true; // Set to true to enable 3D model testing
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +93,15 @@ public class ProductsActivity extends AppCompatActivity {
                                 Product product = document.toObject(Product.class);
 
                                 if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+                                    // In debug mode, add test 3D model URLs to products that don't have them
+//                                    if (isDebugMode && !product.hasArModel()) {
+//                                        // Add a random demo model
+//                                        ArDemoUtils.addTestModelToProductObject(product, -1);
+//                                    }
+                                    
                                     productList.add(product);
-                                    Log.d(TAG, "Product added: " + product.getName() + ", Image: "
-                                            + product.getImageUrl());
+                                    Log.d(TAG, "Product added: " + product.getName() + 
+                                              ", Has 3D model: " + product.hasArModel());
                                 } else {
                                     Log.w(TAG, "Product skipped (no image): " + product.getName());
                                 }
@@ -106,6 +114,15 @@ public class ProductsActivity extends AppCompatActivity {
                                         .show();
                             } else {
                                 Log.d(TAG, "Total products loaded: " + productList.size());
+                                
+                                // Debug info for AR models
+                                if (isDebugMode) {
+                                    int arModels = 0;
+                                    for (Product p : productList) {
+                                        if (p.hasArModel()) arModels++;
+                                    }
+                                    Log.d(TAG, "Products with AR models: " + arModels);
+                                }
                             }
                         } else {
                             Log.w(TAG, "Error getting products.", task.getException());

@@ -21,6 +21,16 @@
             android:textColor="#2C3E50"
             android:layout_marginBottom="32dp" />
 
+        <!-- Welcome Screen -->
+        <Button
+            android:id="@+id/btnWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome Screen"
+            android:backgroundTint="#9C27B0"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
         <!-- Profile Activity -->
         <Button
             android:id="@+id/btnProfile"

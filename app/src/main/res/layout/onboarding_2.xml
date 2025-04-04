@@ -90,7 +90,7 @@
 
         <!-- Let's Go Button - Fixed color and style -->
         <Button
-            android:id="@+id/getStartedButton"
+            android:id="@+id/btnNext"
             style="@style/rounded_corner_button"
             android:layout_marginBottom="45dp"
             android:layout_marginTop="-30dp"
