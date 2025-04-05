@@ -63,9 +63,6 @@
         <activity
             android:name=".activities.TempNavigationActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.EditProfileActivity"
-            android:exported="false" />
             
         <!-- AR Core metadata -->
         <meta-data

@@ -108,7 +108,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Menu options - Reduced top margin to remove the gap -->
+            <!-- Menu options -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/menu_section"
                 android:layout_width="match_parent"
