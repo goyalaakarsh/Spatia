@@ -1,6 +1,7 @@
 package com.example.spatia.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.spatia.R;
+import com.example.spatia.activities.ProductDetailActivity;
 import com.example.spatia.model.Product;
 
 import java.text.NumberFormat;
@@ -50,11 +52,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             .centerCrop()
             .into(holder.productImage);
         
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
+        holder.itemView.setOnClickListener(v -> {
+            // Navigate to product details activity
+            Intent intent = new Intent(context, ProductDetailActivity.class);
+            intent.putExtra("product_id", product.getId());
+            context.startActivity(intent);
         });
     }
 

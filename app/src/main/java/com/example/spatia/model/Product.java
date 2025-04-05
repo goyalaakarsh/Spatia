@@ -20,19 +20,23 @@ public class Product {
 
     @SerializedName("imageUrl")
     private String imageUrl;
+    
+    @SerializedName("modelUrl")
+    private String modelUrl; // URL for 3D model (GLB format)
 
     // No-args constructor (required for Gson)
     public Product() {
     }
 
     // Full constructor
-    public Product(int id, String name, String description, double price, String category, String imageUrl) {
+    public Product(int id, String name, String description, double price, String category, String imageUrl, String modelUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
         this.imageUrl = imageUrl;
+        this.modelUrl = modelUrl;
     }
 
     // Simplified constructor
@@ -43,6 +47,7 @@ public class Product {
         this.description = "";
         this.category = "";
         this.imageUrl = "";
+        this.modelUrl = "";
     }
 
     // Getters and setters
@@ -92,5 +97,21 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    
+    public String getModelUrl() {
+        return modelUrl;
+    }
+    
+    public void setModelUrl(String modelUrl) {
+        this.modelUrl = modelUrl;
+    }
+    
+    /**
+     * Checks if the product has a valid 3D model available for AR view
+     * @return true if a model URL is available, false otherwise
+     */
+    public boolean hasArModel() {
+        return modelUrl != null && !modelUrl.isEmpty();
     }
 }

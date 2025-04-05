@@ -18,8 +18,18 @@
             android:text="Spatia App Navigation"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark"
+            android:textColor="#2C3E50"
             android:layout_marginBottom="32dp" />
+
+        <!-- Welcome Screen -->
+        <Button
+            android:id="@+id/btnWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome Screen"
+            android:backgroundTint="#9C27B0"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
 
         <!-- Profile Activity -->
         <Button
@@ -27,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Profile"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Cart Activity -->
@@ -36,7 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Shopping Cart"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Products Activity -->
@@ -45,7 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Products"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Home Activity -->
@@ -54,7 +67,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Home"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB" 
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Search Activity -->
@@ -63,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Search"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Orders Activity -->
@@ -72,7 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Orders"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Settings Activity -->
@@ -81,7 +97,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Settings"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#3498DB"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Login/Logout -->
@@ -90,7 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login/Logout"
-            style="@style/PrimaryButton"
+            android:backgroundTint="#E74C3C"
+            android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
         <!-- Divider -->

@@ -4,6 +4,10 @@
     package="com.example.spatia">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    
+    <!-- AR features -->
+    <uses-feature android:name="android.hardware.camera.ar" android:required="false" />
 
     <application
         android:name=".MyApplication"
@@ -16,6 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Spatia.NoActionBar">
+            
+        <activity
+            android:name=".activities.ProductDetailActivity"
+            android:exported="false" />
+            
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -36,6 +45,26 @@
         <activity
             android:name=".activities.CartActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Onboarding1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Onboarding2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Onboarding3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TempNavigationActivity"
+            android:exported="false" />
+            
+        <!-- AR Core metadata -->
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="optional" />
     </application>
 
 </manifest>

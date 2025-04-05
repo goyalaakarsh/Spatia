@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.spatia.MainActivity;
 import com.example.spatia.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -48,14 +49,14 @@ public class AuthActivity extends Activity {
     }
 
     private void showLoginView() {
-        setContentView(R.layout.login);
+        setContentView(R.layout.log_in);
         isLoginMode = true;
 
-        // Initialize UI elements
+        // Initialize UI elements with IDs from log_in.xml
         emailField = findViewById(R.id.loginEmail);
         passwordField = findViewById(R.id.loginPassword);
-        actionButton = findViewById(R.id.loginButton);
-        switchAuthMode = findViewById(R.id.switchToSignup);
+        actionButton = findViewById(R.id.SignupButton); // Note: Button ID is SignupButton even though it's for login
+        switchAuthMode = findViewById(R.id.sign_up_text);
 
         // Set button click listener
         actionButton.setOnClickListener(new View.OnClickListener() {
@@ -80,14 +81,14 @@ public class AuthActivity extends Activity {
     }
 
     private void showSignupView() {
-        setContentView(R.layout.signup);
+        setContentView(R.layout.sign_up);
         isLoginMode = false;
 
-        // Initialize UI elements
-        emailField = findViewById(R.id.signupEmail);
-        passwordField = findViewById(R.id.signupPassword);
-        actionButton = findViewById(R.id.signupButton);
-        switchAuthMode = findViewById(R.id.switchToLogin);
+        // Initialize UI elements with IDs from sign_up.xml
+        emailField = findViewById(R.id.SignUpEmail);
+        passwordField = findViewById(R.id.SignUpPassword);
+        actionButton = findViewById(R.id.SignupButton);
+        switchAuthMode = findViewById(R.id.log_in_text);
 
         // Set button click listener
         actionButton.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +207,7 @@ public class AuthActivity extends Activity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(AuthActivity.this, "Login successful!",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(user);
+                            onSuccessfulLogin();
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(AuthActivity.this, "Authentication failed: " +
@@ -255,5 +256,13 @@ public class AuthActivity extends Activity {
 
             setContentView(R.layout.temp_navigation);
         }
+    }
+
+    private void onSuccessfulLogin() {
+        // After successful login, navigate to MainActivity
+        Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
