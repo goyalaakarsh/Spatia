@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spatia.MainActivity;
 import com.example.spatia.R;
+//import com.example.spatia.ar.ArViewActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class TempNavigationActivity extends AppCompatActivity {
@@ -40,6 +41,11 @@ public class TempNavigationActivity extends AppCompatActivity {
             Intent intent = new Intent(TempNavigationActivity.this, ProductsActivity.class);
             startActivity(intent);
         });
+
+//        findViewById(R.id.btnARScreen).setOnClickListener(v -> {
+//            Intent intent = new Intent(TempNavigationActivity.this, ArViewActivity.class);
+//            startActivity(intent);
+//        });
 
         // Home button (stays in MainActivity)
         findViewById(R.id.btnHome).setOnClickListener(v -> {

@@ -47,7 +47,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
     private Map<Integer, Product> productMap;
     private TextView totalPriceTextView;
     private TextView emptyCartTextView;
-    private Button checkoutButton;
+    private TextView swipeToCheckoutTextView; // Changed from Button to TextView
     private ProgressBar progressBar;
 
     private NumberFormat currencyFormatter;
@@ -70,7 +70,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         recyclerView = findViewById(R.id.cartRecyclerView);
         totalPriceTextView = findViewById(R.id.cartTotalPrice);
         emptyCartTextView = findViewById(R.id.emptyCartText);
-        //checkoutButton = findViewById(R.id.checkoutButton);
+        swipeToCheckoutTextView = findViewById(R.id.swipeToCheckout); // Initialize with correct ID
         progressBar = findViewById(R.id.cartProgressBar);
 
         cartItems = new ArrayList<>();
@@ -81,7 +81,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        checkoutButton.setOnClickListener(v -> processCheckout());
+        swipeToCheckoutTextView.setOnClickListener(v -> processCheckout()); // Changed from checkoutButton
 
         loadCartItems();
     }

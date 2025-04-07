@@ -3,11 +3,10 @@ package com.example.spatia.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.example.spatia.R;
 import com.example.spatia.activities.ProfileActivity;
@@ -21,14 +20,22 @@ public class BottomNavHelper {
      * @param activity The current activity
      * @param navigationView The bottom navigation view
      */
-    public static void setupBottomNavigation(Activity activity, BottomNavigationView navigationView) {
+    public static void setupBottomNavigation(final Activity activity, BottomNavigationView navigationView) {
+        if (activity == null || navigationView == null) {
+            Log.e(TAG, "setupBottomNavigation called with null parameters");
+            return;
+        }
+        
         try {
-            // Set the appropriate item as selected based on the activity
-            if (activity.getClass().getSimpleName().equals("HomeActivity")) {
+            // Set the appropriate item as selected based on the activity class
+            String activityName = activity.getClass().getSimpleName();
+            Log.d(TAG, "Setting up bottom navigation for: " + activityName);
+            
+            if (activityName.equals("HomeActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_home);
-            } else if (activity.getClass().getSimpleName().equals("CartActivity")) {
+            } else if (activityName.equals("CartActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_cart);
-            } else if (activity.getClass().getSimpleName().equals("OrdersActivity")) {
+            } else if (activityName.equals("OrdersActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_orders);
             } else if (activity instanceof ProfileActivity) {
                 navigationView.setSelectedItemId(R.id.navigation_profile);
@@ -36,57 +43,57 @@ public class BottomNavHelper {
 
             // Set up navigation item click listener
             navigationView.setOnItemSelectedListener(item -> {
-                int itemId = item.getItemId();
+                final int itemId = item.getItemId();
                 
                 // Don't do anything if we're already on this page
                 if (itemId == navigationView.getSelectedItemId()) {
+                    Log.d(TAG, "Already on selected page: " + itemId);
                     return true;
                 }
                 
-                Context context = activity.getApplicationContext();
+                Log.d(TAG, "Navigation item clicked: " + itemId);
                 
-                // Navigate to the appropriate activity
-                Intent intent = null;
-                if (itemId == R.id.navigation_home) {
-                    try {
-                        // Use reflection to avoid direct dependency in case the class is not created yet
-                        Class<?> homeActivityClass = Class.forName("com.example.spatia.activities.HomeActivity");
-                        intent = new Intent(activity, homeActivityClass);
-                    } catch (ClassNotFoundException e) {
-                        Toast.makeText(context, "Home screen coming soon", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "HomeActivity not found", e);
+                // Run navigation in a separate thread to avoid UI blocking
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    // Navigate to the appropriate activity
+                    if (itemId == R.id.navigation_home) {
+                        navigateToActivity(activity, "com.example.spatia.activities.HomeActivity", "Home");
+                    } else if (itemId == R.id.navigation_cart) {
+                        navigateToActivity(activity, "com.example.spatia.activities.CartActivity", "Cart");
+                    } else if (itemId == R.id.navigation_orders) {
+                        navigateToActivity(activity, "com.example.spatia.activities.OrdersActivity", "Orders");
+                    } else if (itemId == R.id.navigation_profile) {
+                        // We can directly reference ProfileActivity since we already import it
+                        Intent intent = new Intent(activity, ProfileActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        activity.startActivity(intent);
+                        activity.overridePendingTransition(0, 0);
                     }
-                } else if (itemId == R.id.navigation_cart) {
-                    try {
-                        Class<?> cartActivityClass = Class.forName("com.example.spatia.activities.CartActivity");
-                        intent = new Intent(activity, cartActivityClass);
-                    } catch (ClassNotFoundException e) {
-                        Toast.makeText(context, "Cart feature coming soon", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "CartActivity not found", e);
-                    }
-                } else if (itemId == R.id.navigation_orders) {
-                    try {
-                        Class<?> ordersActivityClass = Class.forName("com.example.spatia.activities.OrdersActivity");
-                        intent = new Intent(activity, ordersActivityClass);
-                    } catch (ClassNotFoundException e) {
-                        Toast.makeText(context, "Orders feature coming soon", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "OrdersActivity not found", e);
-                    }
-                } else if (itemId == R.id.navigation_profile) {
-                    intent = new Intent(activity, ProfileActivity.class);
-                }
+                });
                 
-                if (intent != null) {
-                    // Clear back stack when navigating between bottom nav items
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    activity.startActivity(intent);
-                    return true;
-                }
-                
-                return false;
+                return true;
             });
+            
         } catch (Exception e) {
             Log.e(TAG, "Error setting up bottom navigation", e);
+        }
+    }
+    
+    /**
+     * Helper method to navigate to an activity using reflection
+     */
+    private static void navigateToActivity(Activity activity, String className, String featureName) {
+        try {
+            Class<?> targetClass = Class.forName(className);
+            Intent intent = new Intent(activity, targetClass);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(0, 0);
+        } catch (ClassNotFoundException e) {
+            Toast.makeText(activity, featureName + " feature coming soon", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, className + " not found", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Error navigating to " + className, e);
         }
     }
 }
