@@ -18,7 +18,6 @@ import com.example.spatia.model.CartItem;
 import com.example.spatia.model.Product;
 
 import java.text.NumberFormat;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         this.cartItems = cartItems;
         this.productMap = productMap;
         this.actionListener = listener;
-        this.currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        this.currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("en", "IN")); // Using Indian Rupee format
     }
 
     @NonNull
@@ -58,14 +57,22 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         if (product != null) {
             holder.nameTextView.setText(product.getName());
-            holder.priceTextView.setText(currencyFormatter.format(product.getPrice()));
+            holder.priceTextView.setText("₹" + product.getPrice());
             holder.quantityTextView.setText(String.valueOf(cartItem.getQuantity()));
 
-            Glide.with(context)
-                .load(product.getImageUrl())
-                .centerCrop()
-                .into(holder.imageView);
+            // Load product image using Glide
+            if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+                Glide.with(context)
+                    .load(product.getImageUrl())
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.error_image)
+                    .centerCrop()
+                    .into(holder.imageView);
+            } else {
+                holder.imageView.setImageResource(R.drawable.placeholder_image);
+            }
 
+            // Set quantity controls
             holder.incrementButton.setOnClickListener(v -> {
                 int newQuantity = cartItem.getQuantity() + 1;
                 if (actionListener != null) {
@@ -82,6 +89,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 }
             });
 
+            // Set remove button action
             holder.removeButton.setOnClickListener(v -> {
                 if (actionListener != null) {
                     actionListener.onItemRemoved(cartItem);

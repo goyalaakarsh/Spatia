@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(this, "Welcome back, " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
 //
 //        }
-        // insertProducts();
+//         insertProducts();
     }
     
     // Handle back button click in the action bar
@@ -134,14 +134,22 @@ public class MainActivity extends AppCompatActivity {
             inputStream.close();
 
             WriteBatch batch = db.batch();
-
-            for (Product product : products) {
-                batch.set(db.collection("products").document(String.valueOf(product.getId())), product);
+            
+            // Assign sequential IDs to products if they don't have them
+            for (int i = 0; i < products.size(); i++) {
+                Product product = products.get(i);
+                if (product.getId() <= 0) {
+                    product.setId(i + 1); // Set sequential ID starting from 1
+                }
+                
+                // Use auto-generated document ID instead of product ID
+                // This ensures each document is unique
+                batch.set(db.collection("products").document(), product);
             }
 
             batch.commit()
                     .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(this, "All products added successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "All " + products.size() + " products added successfully", Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(this, "Error adding products: " + e.getMessage(), Toast.LENGTH_LONG).show();

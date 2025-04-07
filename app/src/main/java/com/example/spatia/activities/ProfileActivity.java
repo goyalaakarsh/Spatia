@@ -275,7 +275,7 @@ public class ProfileActivity extends AppCompatActivity {
             try {
                 authActivityClass = Class.forName("com.example.spatia.activities.AuthActivity");
             } catch (ClassNotFoundException e) {
-                authActivityClass = Class.forName("com.example.spatia.activities.LoginActivity");
+                authActivityClass = Class.forName("com.example.spatia.activities.AuthActivity");
             }
             
             Intent intent = new Intent(ProfileActivity.this, authActivityClass);

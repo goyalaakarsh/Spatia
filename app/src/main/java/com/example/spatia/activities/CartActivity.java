@@ -1,30 +1,27 @@
 package com.example.spatia.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spatia.R;
 import com.example.spatia.adapters.CartAdapter;
+import com.example.spatia.adapters.ProductAdapter;
 import com.example.spatia.model.CartItem;
 import com.example.spatia.model.Product;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -42,12 +39,15 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
     private FirebaseUser currentUser;
 
     private RecyclerView recyclerView;
+    private RecyclerView recommendedRecyclerView;
     private CartAdapter adapter;
+    private ProductAdapter recommendedProductsAdapter;
     private List<CartItem> cartItems;
+    private List<Product> recommendedProducts;
     private Map<Integer, Product> productMap;
     private TextView totalPriceTextView;
     private TextView emptyCartTextView;
-    private TextView swipeToCheckoutTextView; // Changed from Button to TextView
+    private TextView swipeToCheckoutTextView;
     private ProgressBar progressBar;
 
     private NumberFormat currencyFormatter;
@@ -63,6 +63,8 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
 
         if (currentUser == null) {
             Toast.makeText(this, "Please login to view your cart", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, AuthActivity.class);
+            startActivity(intent);
             finish();
             return;
         }
@@ -70,20 +72,22 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         recyclerView = findViewById(R.id.cartRecyclerView);
         totalPriceTextView = findViewById(R.id.cartTotalPrice);
         emptyCartTextView = findViewById(R.id.emptyCartText);
-        swipeToCheckoutTextView = findViewById(R.id.swipeToCheckout); // Initialize with correct ID
+        swipeToCheckoutTextView = findViewById(R.id.swipeToCheckout);
         progressBar = findViewById(R.id.cartProgressBar);
 
         cartItems = new ArrayList<>();
+        recommendedProducts = new ArrayList<>();
         productMap = new HashMap<>();
-        currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("en", "IN")); // Using Indian Rupee format
 
         adapter = new CartAdapter(this, cartItems, productMap, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        swipeToCheckoutTextView.setOnClickListener(v -> processCheckout()); // Changed from checkoutButton
+        swipeToCheckoutTextView.setOnClickListener(v -> processCheckout());
 
         loadCartItems();
+        loadRecommendedProducts();
     }
 
     private void loadCartItems() {
@@ -97,7 +101,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             List<Map<String, Object>> items = (List<Map<String, Object>>) document.get("items");
-                            if (items != null) {
+                            if (items != null && !items.isEmpty()) {
                                 cartItems.clear();
                                 for (Map<String, Object> item : items) {
                                     int productId = ((Long) item.get("productId")).intValue();
@@ -164,6 +168,26 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
                 });
     }
 
+    private void loadRecommendedProducts() {
+        db.collection("products")
+            .whereEqualTo("category", "Sofa")
+            .limit(5)
+            .get()
+            .addOnSuccessListener(queryDocumentSnapshots -> {
+                recommendedProducts.clear();
+                for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                    Product product = document.toObject(Product.class);
+                    recommendedProducts.add(product);
+                }
+                
+                // Setup recommended products in a horizontal RecyclerView if needed
+                // This part depends on how you want to handle recommended products in your UI
+            })
+            .addOnFailureListener(e -> {
+                Log.w(TAG, "Error loading recommended products", e);
+            });
+    }
+
     private void updateCartUI() {
         if (cartItems.isEmpty()) {
             showEmptyCartView();
@@ -175,8 +199,19 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         adapter.notifyDataSetChanged();
         
         // Update total price
-        double totalPrice = adapter.calculateTotalPrice();
+        double totalPrice = calculateTotalPrice();
         totalPriceTextView.setText(currencyFormatter.format(totalPrice));
+    }
+
+    private double calculateTotalPrice() {
+        double total = 0;
+        for (CartItem item : cartItems) {
+            Product product = productMap.get(item.getProductId());
+            if (product != null) {
+                total += product.getPrice() * item.getQuantity();
+            }
+        }
+        return total;
     }
 
     private void showEmptyCartView() {
@@ -191,6 +226,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
 
     @Override
     public void onQuantityChanged(CartItem item, int newQuantity) {
+        // Update local cart item quantity
         for (CartItem cartItem : cartItems) {
             if (cartItem.getProductId() == item.getProductId()) {
                 cartItem.setQuantity(newQuantity);
@@ -198,36 +234,51 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
             }
         }
 
+        // Update UI
         adapter.notifyDataSetChanged();
-        double totalPrice = adapter.calculateTotalPrice();
+        double totalPrice = calculateTotalPrice();
         totalPriceTextView.setText(currencyFormatter.format(totalPrice));
 
+        // Update in Firestore
         updateCartInFirestore();
     }
 
     @Override
     public void onItemRemoved(CartItem item) {
+        // Remove item from local cart
         cartItems.remove(item);
         
+        // Update UI
         if (cartItems.isEmpty()) {
             showEmptyCartView();
         } else {
             adapter.notifyDataSetChanged();
-            double totalPrice = adapter.calculateTotalPrice();
+            double totalPrice = calculateTotalPrice();
             totalPriceTextView.setText(currencyFormatter.format(totalPrice));
         }
 
+        // Update in Firestore
         updateCartInFirestore();
         
         Toast.makeText(this, "Item removed from cart", Toast.LENGTH_SHORT).show();
     }
 
     private void updateCartInFirestore() {
+        if (currentUser == null) return;
+        
         String userId = currentUser.getUid();
+        
+        List<Map<String, Object>> items = new ArrayList<>();
+        for (CartItem cartItem : cartItems) {
+            Map<String, Object> item = new HashMap<>();
+            item.put("productId", cartItem.getProductId());
+            item.put("quantity", cartItem.getQuantity());
+            items.add(item);
+        }
         
         Map<String, Object> cartData = new HashMap<>();
         cartData.put("userId", userId);
-        cartData.put("items", cartItems);
+        cartData.put("items", items);
 
         db.collection("carts").document(userId)
                 .set(cartData)
@@ -246,6 +297,15 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
             return;
         }
 
+        // Here you would typically navigate to a checkout activity
         Toast.makeText(this, "Proceeding to checkout...", Toast.LENGTH_SHORT).show();
+        
+        // For now, just show a success message since checkout is not implemented
+        Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_LONG).show();
+        
+        // Clear the cart after successful checkout
+        cartItems.clear();
+        updateCartInFirestore();
+        showEmptyCartView();
     }
 }

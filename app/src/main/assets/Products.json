@@ -1,242 +1,292 @@
 [
     {
-        "id": 1,
-        "name": "Modern Leather Sofa",
-        "description": "A sleek and comfortable leather sofa perfect for contemporary living rooms.",
-        "price": 799.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1550581190-9e5d80d1e0e2"
-    },
-    {
-        "id": 2,
-        "name": "Wooden Coffee Table",
-        "description": "A minimalist wooden coffee table with a natural finish.",
-        "price": 149.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 3,
-        "name": "Velvet Armchair",
-        "description": "A luxurious velvet armchair in a deep blue shade.",
-        "price": 249.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1519961655809-2fa5a7a829d8"
-    },
-    {
-        "id": 4,
-        "name": "Queen Size Bed",
-        "description": "A sturdy wooden bed frame with a modern design.",
-        "price": 599.99,
-        "category": "Bedroom",
-        "imageUrl": "https://images.unsplash.com/photo-1505693416388-acff0d5d01f5"
-    },
-    {
-        "id": 5,
-        "name": "Nightstand",
-        "description": "A compact nightstand with a single drawer and shelf.",
-        "price": 89.99,
-        "category": "Bedroom",
-        "imageUrl": "https://images.unsplash.com/photo-1611262588491-4b282d9e0738"
-    },
-    {
-        "id": 6,
-        "name": "Dining Table Set",
-        "description": "A 6-seater dining table with matching chairs.",
-        "price": 899.99,
-        "category": "Dining Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154526-990dced4363a"
-    },
-    {
-        "id": 7,
         "name": "Bar Stool",
-        "description": "A stylish bar stool with a metal frame and cushioned seat.",
-        "price": 79.99,
-        "category": "Dining Room",
-        "imageUrl": "https://images.unsplash.com/photo-1598306218378-9e899e175139"
-    },
-    {
-        "id": 8,
-        "name": "Bookshelf",
-        "description": "A tall wooden bookshelf with five shelves.",
-        "price": 199.99,
-        "category": "Office",
-        "imageUrl": "https://images.unsplash.com/photo-1592495991373-8d3a56b5f4e4"
-    },
-    {
-        "id": 9,
-        "name": "Desk Chair",
-        "description": "An ergonomic chair with adjustable height and lumbar support.",
-        "price": 129.99,
-        "category": "Office",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 10,
-        "name": "TV Stand",
-        "description": "A modern TV stand with open shelves and cable management.",
-        "price": 159.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 11,
-        "name": "Recliner",
-        "description": "A plush recliner with a footrest for ultimate relaxation.",
-        "price": 349.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1579656592043-aabebc073b9f"
-    },
-    {
-        "id": 12,
-        "name": "Wardrobe",
-        "description": "A spacious wardrobe with sliding doors and mirror.",
-        "price": 499.99,
-        "category": "Bedroom",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 13,
-        "name": "Side Table",
-        "description": "A small round side table with a marble top.",
-        "price": 99.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 14,
-        "name": "Dresser",
-        "description": "A six-drawer dresser with a sleek white finish.",
-        "price": 299.99,
-        "category": "Bedroom",
-        "imageUrl": "https://images.unsplash.com/photo-1611262588491-4b282d9e0738"
-    },
-    {
-        "id": 15,
-        "name": "Pendant Lamp",
-        "description": "A modern pendant lamp with a geometric design.",
-        "price": 69.99,
-        "category": "Lighting",
-        "imageUrl": "https://images.unsplash.com/photo-1513506003901-1e6a229e77f8"
-    },
-    {
-        "id": 16,
-        "name": "Sectional Sofa",
-        "description": "A spacious sectional sofa with soft fabric upholstery.",
-        "price": 999.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1550581190-9e5d80d1e0e2"
-    },
-    {
-        "id": 17,
-        "name": "Console Table",
-        "description": "A narrow console table for entryways or hallways.",
-        "price": 139.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 18,
-        "name": "Bunk Bed",
-        "description": "A sturdy bunk bed perfect for kids' rooms.",
-        "price": 399.99,
-        "category": "Bedroom",
-        "imageUrl": "https://images.unsplash.com/photo-1505693416388-acff0d5d01f5"
-    },
-    {
-        "id": 19,
-        "name": "Ottoman",
-        "description": "A cushioned ottoman that doubles as storage.",
+        "description": "A classic bar stool, suitable for kitchens or home bars. Provides elevated seating.",
         "price": 89.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+        "category": "Seating",
+        "imageUrl": "https://static.poly.pizza/92b747ab-ed11-47f4-bcfb-a218b0b7e439.webp",
+        "modelUrl": "https://static.poly.pizza/92b747ab-ed11-47f4-bcfb-a218b0b7e439.glb",
+        "material": "Metal and Wood",
+        "rating": 4.2
     },
     {
-        "id": 20,
-        "name": "Dining Chair",
-        "description": "A set of two upholstered dining chairs.",
-        "price": 129.99,
-        "category": "Dining Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154526-990dced4363a"
+        "name": "Bathroom Cabinet",
+        "description": "A wall-mounted or freestanding cabinet for bathroom storage. Keeps toiletries organized.",
+        "price": 129.5,
+        "category": "Bathroom",
+        "imageUrl": "https://static.poly.pizza/fb8b7c53-d7d4-435a-b9da-3c01d183af13.webp",
+        "modelUrl": "https://static.poly.pizza/fb8b7c53-d7d4-435a-b9da-3c01d183af13.glb",
+        "material": "Wood Composite",
+        "rating": 4.0
     },
     {
-        "id": 21,
-        "name": "Floor Lamp",
-        "description": "A tall floor lamp with an adjustable arm.",
-        "price": 79.99,
-        "category": "Lighting",
-        "imageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+        "name": "Bathroom Mirror",
+        "description": "A functional mirror for bathroom vanities. Essential for grooming routines.",
+        "price": 59.0,
+        "category": "Bathroom",
+        "imageUrl": "https://static.poly.pizza/c560749a-e28c-4b65-8f4d-c068b920ee4f.webp",
+        "modelUrl": "https://static.poly.pizza/c560749a-e28c-4b65-8f4d-c068b920ee4f.glb",
+        "material": "Glass and Metal/Wood Frame",
+        "rating": 4.6
     },
     {
-        "id": 22,
-        "name": "Office Desk",
-        "description": "A spacious desk with drawers and cable management.",
-        "price": 249.99,
-        "category": "Office",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+        "name": "Bathroom Sink Square",
+        "description": "A modern square-shaped sink basin for bathrooms. Offers a contemporary look.",
+        "price": 175.0,
+        "category": "Bathroom",
+        "imageUrl": "https://static.poly.pizza/f847ce7f-46d7-4ee7-92cd-fcf1cad5a7c2.webp",
+        "modelUrl": "https://static.poly.pizza/f847ce7f-46d7-4ee7-92cd-fcf1cad5a7c2.glb",
+        "material": "Ceramic",
+        "rating": 4.7
     },
     {
-        "id": 23,
-        "name": "Rocking Chair",
-        "description": "A classic wooden rocking chair for porches or nurseries.",
-        "price": 179.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1579656592043-aabebc073b9f"
+        "name": "Bathroom Sink",
+        "description": "A standard sink basin for bathrooms. Available in various styles and materials.",
+        "price": 145.99,
+        "category": "Bathroom",
+        "imageUrl": "https://static.poly.pizza/6c0b7fe1-8e06-4940-98ba-52dd18df00b3.webp",
+        "modelUrl": "https://static.poly.pizza/6c0b7fe1-8e06-4940-98ba-52dd18df00b3.glb",
+        "material": "Ceramic",
+        "rating": 4.4
     },
     {
-        "id": 24,
-        "name": "Mattress",
-        "description": "A memory foam mattress for a comfortable sleep.",
-        "price": 399.99,
-        "category": "Bedroom",
-        "imageUrl": "https://images.unsplash.com/photo-1505693416388-acff0d5d01f5"
-    },
-    {
-        "id": 25,
-        "name": "Kitchen Island",
-        "description": "A mobile kitchen island with storage and countertop.",
-        "price": 349.99,
-        "category": "Kitchen",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-    },
-    {
-        "id": 26,
-        "name": "Accent Chair",
-        "description": "A bold accent chair with a unique pattern.",
-        "price": 199.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1519961655809-2fa5a7a829d8"
-    },
-    {
-        "id": 27,
-        "name": "Wall Shelf",
-        "description": "A set of three floating wall shelves.",
-        "price": 59.99,
-        "category": "Office",
-        "imageUrl": "https://images.unsplash.com/photo-1592495991373-8d3a56b5f4e4"
-    },
-    {
-        "id": 28,
-        "name": "Chaise Lounge",
-        "description": "A luxurious chaise lounge for ultimate comfort.",
+        "name": "Bathtub",
+        "description": "A large tub for bathing, typically installed in bathrooms. Offers relaxation.",
         "price": 499.99,
-        "category": "Living Room",
-        "imageUrl": "https://images.unsplash.com/photo-1550581190-9e5d80d1e0e2"
+        "category": "Bathroom",
+        "imageUrl": "https://static.poly.pizza/72c078cf-f0cb-45dc-b9b6-e732e980576e.webp",
+        "modelUrl": "https://static.poly.pizza/72c078cf-f0cb-45dc-b9b6-e732e980576e.glb",
+        "material": "Acrylic or Porcelain",
+        "rating": 4.8
     },
     {
-        "id": 29,
-        "name": "Bar Cabinet",
-        "description": "A stylish bar cabinet with wine storage.",
+        "name": "Bear Head mount",
+        "description": "A decorative wall mount shaped like a bear's head. Adds a rustic touch.",
+        "price": 75.0,
+        "category": "Decor",
+        "imageUrl": "https://static.poly.pizza/cfd55df8-d96a-4bf6-9d51-63c8b810ad4d.webp",
+        "modelUrl": "https://static.poly.pizza/cfd55df8-d96a-4bf6-9d51-63c8b810ad4d.glb",
+        "material": "Resin or Faux Fur",
+        "rating": 4.1
+    },
+    {
+        "name": "Bed Bunk",
+        "description": "A bunk bed frame, stacking two beds vertically. Ideal for saving space in shared rooms.",
+        "price": 399.0,
+        "category": "Bedroom Furniture",
+        "imageUrl": "https://static.poly.pizza/1d898d94-d392-4b50-8a2e-cfd524301a4c.webp",
+        "modelUrl": "https://static.poly.pizza/1d898d94-d392-4b50-8a2e-cfd524301a4c.glb",
+        "material": "Wood or Metal",
+        "rating": 4.3
+    },
+    {
+        "name": "Bed Double",
+        "description": "A standard double bed frame. Accommodates two people comfortably.",
+        "price": 349.5,
+        "category": "Bedroom Furniture",
+        "imageUrl": "https://static.poly.pizza/1e5a13d0-0dfe-464a-a50c-9a53f69122f2.webp",
+        "modelUrl": "https://static.poly.pizza/1e5a13d0-0dfe-464a-a50c-9a53f69122f2.glb",
+        "material": "Wood and Fabric",
+        "rating": 4.5
+    },
+    {
+        "name": "Bed Single",
+        "description": "A bed frame designed for a single mattress. Suitable for individual sleepers or kids' rooms.",
+        "price": 249.99,
+        "category": "Bedroom Furniture",
+        "imageUrl": "https://static.poly.pizza/412f5303-86bc-48b2-aaeb-99393c0a4004.webp",
+        "modelUrl": "https://static.poly.pizza/412f5303-86bc-48b2-aaeb-99393c0a4004.glb",
+        "material": "Wood or Metal",
+        "rating": 4.4
+    },
+    {
+        "name": "Bench Cushion Low",
+        "description": "A low-profile bench with a comfortable cushion. Great for entryways or foot-of-bed seating.",
+        "price": 130.0,
+        "category": "Seating",
+        "imageUrl": "https://static.poly.pizza/4fe90065-0a12-45c8-9c56-7e9725492754.webp",
+        "modelUrl": "https://static.poly.pizza/4fe90065-0a12-45c8-9c56-7e9725492754.glb",
+        "material": "Wood and Fabric",
+        "rating": 4.2
+    },
+    {
+        "name": "Bench Cushion",
+        "description": "A versatile bench featuring a padded cushion top. Offers comfortable seating.",
+        "price": 165.0,
+        "category": "Seating",
+        "imageUrl": "https://static.poly.pizza/a538e382-c601-4c3a-89d6-921c672b20c2.webp",
+        "modelUrl": "https://static.poly.pizza/a538e382-c601-4c3a-89d6-921c672b20c2.glb",
+        "material": "Wood and Fabric",
+        "rating": 4.3
+    },
+    {
+        "name": "Bench",
+        "description": "A simple bench providing seating for multiple people. Can be used indoors or outdoors.",
+        "price": 119.99,
+        "category": "Seating",
+        "imageUrl": "https://static.poly.pizza/e54cd2c5-3bc7-48c4-9253-d1405dee137a.webp",
+        "modelUrl": "https://static.poly.pizza/e54cd2c5-3bc7-48c4-9253-d1405dee137a.glb",
+        "material": "Wood or Metal",
+        "rating": 4.0
+    },
+    {
+        "name": "Bookcase Closed Doors",
+        "description": "A bookcase with doors to conceal contents. Keeps items dust-free and tidy.",
+        "price": 280.0,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/f2967462-8f28-4977-aab4-8508eb23bf2c.webp",
+        "modelUrl": "https://static.poly.pizza/f2967462-8f28-4977-aab4-8508eb23bf2c.glb",
+        "material": "Wood or MDF",
+        "rating": 4.5
+    },
+    {
+        "name": "Bookcase Closed Wide",
+        "description": "A wide bookcase featuring closed doors for storage. Offers ample space for books and decor.",
+        "price": 350.0,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/44d13b75-c154-4f11-8c4e-4e57ac3093f7.webp",
+        "modelUrl": "https://static.poly.pizza/44d13b75-c154-4f11-8c4e-4e57ac3093f7.glb",
+        "material": "Wood",
+        "rating": 4.6
+    },
+    {
+        "name": "Bookcase Closed",
+        "description": "A standard bookcase with doors. Provides enclosed storage space.",
+        "price": 250.0,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/fcdb70e0-cc38-4e91-9480-0e79f778e2a5.webp",
+        "modelUrl": "https://static.poly.pizza/fcdb70e0-cc38-4e91-9480-0e79f778e2a5.glb",
+        "material": "Wood Composite",
+        "rating": 4.3
+    },
+    {
+        "name": "Bookcase Open Low",
+        "description": "A low-height bookcase with open shelves. Ideal for display or under-window placement.",
+        "price": 120.0,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/501665c0-827b-4ad8-8c2a-0d2894c25857.webp",
+        "modelUrl": "https://static.poly.pizza/501665c0-827b-4ad8-8c2a-0d2894c25857.glb",
+        "material": "Wood",
+        "rating": 4.1
+    },
+    {
+        "name": "Bookcase Open",
+        "description": "A standard bookcase with open shelving. Perfect for displaying books and decorative items.",
+        "price": 180.0,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/867fee8d-2b89-4383-92f9-58660a76d29a.webp",
+        "modelUrl": "https://static.poly.pizza/867fee8d-2b89-4383-92f9-58660a76d29a.glb",
+        "material": "Wood or Metal",
+        "rating": 4.4
+    },
+    {
+        "name": "Books",
+        "description": "A collection of decorative books. Can be used to fill shelves or as props.",
+        "price": 29.99,
+        "category": "Decor",
+        "imageUrl": "https://static.poly.pizza/a3d65818-0da5-4ac0-ab39-87846fa3458f.webp",
+        "modelUrl": "https://static.poly.pizza/a3d65818-0da5-4ac0-ab39-87846fa3458f.glb",
+        "material": "Paper",
+        "rating": 3.9
+    },
+    {
+        "name": "Cabinet Bed Drawer Tabl",
+        "description": "A multifunctional cabinet, possibly incorporating a bed, drawer, and table features. Versatile furniture piece.",
+        "price": 450.0,
+        "category": "Multifunctional Furniture",
+        "imageUrl": "https://static.poly.pizza/2d613d77-d894-4056-8dca-4058d7ba68d3.webp",
+        "modelUrl": "https://static.poly.pizza/2d613d77-d894-4056-8dca-4058d7ba68d3.glb",
+        "material": "Wood and Metal",
+        "rating": 4.0
+    },
+    {
+        "name": "Cabinet Bed Drawer",
+        "description": "A cabinet unit that includes a drawer and potentially integrates with a bed. Combines storage and sleeping space.",
+        "price": 380.0,
+        "category": "Bedroom Furniture",
+        "imageUrl": "https://static.poly.pizza/061c5208-f45f-4e57-aac4-f47fa9971a0e.webp",
+        "modelUrl": "https://static.poly.pizza/061c5208-f45f-4e57-aac4-f47fa9971a0e.glb",
+        "material": "Wood Composite",
+        "rating": 4.2
+    },
+    {
+        "name": "Cabinet Bed",
+        "description": "A cabinet designed to store or enclose a bed, such as a Murphy bed. Space-saving furniture.",
+        "price": 550.0,
+        "category": "Bedroom Furniture",
+        "imageUrl": "https://static.poly.pizza/196eea92-ef73-45f9-9131-596f1f9f9373.webp",
+        "modelUrl": "https://static.poly.pizza/196eea92-ef73-45f9-9131-596f1f9f9373.glb",
+        "material": "Wood",
+        "rating": 4.6
+    },
+    {
+        "name": "Cabinet Television Doo",
+        "description": "A television stand or media cabinet featuring doors. Hides media equipment neatly.",
         "price": 299.99,
-        "category": "Dining Room",
-        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+        "category": "Living Room Furniture",
+        "imageUrl": "https://static.poly.pizza/5969aded-8e8e-4e51-a81e-ec1c9a379cfb.webp",
+        "modelUrl": "https://static.poly.pizza/5969aded-8e8e-4e51-a81e-ec1c9a379cfb.glb",
+        "material": "Wood or MDF",
+        "rating": 4.3
     },
     {
-        "id": 30,
-        "name": "Table Lamp",
-        "description": "A ceramic table lamp with a fabric shade.",
-        "price": 49.99,
-        "category": "Lighting",
-        "imageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+        "name": "Cabinet Television",
+        "description": "An open-style television stand or console. Provides space for TV and media devices.",
+        "price": 220.0,
+        "category": "Living Room Furniture",
+        "imageUrl": "https://static.poly.pizza/7281f563-73a5-4907-ae55-7ede647c4e0e.webp",
+        "modelUrl": "https://static.poly.pizza/7281f563-73a5-4907-ae55-7ede647c4e0e.glb",
+        "material": "Wood and Metal",
+        "rating": 4.1
+    },
+    {
+        "name": "Cardboard Box Closed",
+        "description": "A simple closed cardboard box. Useful for storage simulation or set dressing.",
+        "price": 5.99,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/4dd8687e-a34d-4688-84ce-4084dc797476.webp",
+        "modelUrl": "https://static.poly.pizza/4dd8687e-a34d-4688-84ce-4084dc797476.glb",
+        "material": "Cardboard",
+        "rating": 3.5
+    },
+    {
+        "name": "Cardboard Box Open",
+        "description": "An open cardboard box, perhaps with contents implied. Good for scenes depicting moving or storage.",
+        "price": 6.5,
+        "category": "Storage",
+        "imageUrl": "https://static.poly.pizza/37d27b8e-cd9f-4956-9440-22b895a6ed54.webp",
+        "modelUrl": "https://static.poly.pizza/37d27b8e-cd9f-4956-9440-22b895a6ed54.glb",
+        "material": "Cardboard",
+        "rating": 3.6
+    },
+    {
+        "name": "Ceiling Fan",
+        "description": "A fan mounted on the ceiling for air circulation. Often includes a light fixture.",
+        "price": 149.0,
+        "category": "Appliances",
+        "imageUrl": "https://static.poly.pizza/5eff391b-985b-4f7f-8ab2-5475ed012c2d.webp",
+        "modelUrl": "https://static.poly.pizza/5eff391b-985b-4f7f-8ab2-5475ed012c2d.glb",
+        "material": "Metal and Plastic/Wood Blades",
+        "rating": 4.7
+    },
+    {
+        "name": "Chair Cushion",
+        "description": "A chair featuring a distinct cushion for comfort. Suitable for dining or occasional seating.",
+        "price": 95.0,
+        "category": "Seating",
+        "imageUrl": "https://static.poly.pizza/8e2842d3-cce7-4010-ba2d-f7acab26d1d9.webp",
+        "modelUrl": "https://static.poly.pizza/8e2842d3-cce7-4010-ba2d-f7acab26d1d9.glb",
+        "material": "Wood and Fabric",
+        "rating": 4.2
+    },
+    {
+        "name": "Chair Modern Cushion",
+        "description": "A contemporary chair design with an integrated cushion. Offers style and comfort.",
+        "price": 155.0,
+        "category": "Seating",
+        "imageUrl": "https://static.poly.pizza/2946053d-9e0c-4629-8069-fce2b1e06c0c.webp",
+        "modelUrl": "https://static.poly.pizza/2946053d-9e0c-4629-8069-fce2b1e06c0c.glb",
+        "material": "Metal and Fabric",
+        "rating": 4.5
     }
 ]

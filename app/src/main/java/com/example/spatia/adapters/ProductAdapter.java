@@ -16,20 +16,16 @@ import com.example.spatia.R;
 import com.example.spatia.activities.ProductDetailActivity;
 import com.example.spatia.model.Product;
 
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private Context context;
     private List<Product> productList;
-    private NumberFormat currencyFormatter;
 
     public ProductAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
-        this.currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
     }
 
     @NonNull
@@ -44,16 +40,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = productList.get(position);
         
         holder.productName.setText(product.getName());
-        holder.productPrice.setText("₹" + (product.getPrice()));
+        holder.productPrice.setText("₹" + product.getPrice());
         holder.productCategory.setText(product.getCategory());
         
-        Glide.with(context)
-            .load(product.getImageUrl())
-            .centerCrop()
-            .into(holder.productImage);
+        // Load product image using Glide
+        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+            Glide.with(context)
+                .load(product.getImageUrl())
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.error_image)
+                .centerCrop()
+                .into(holder.productImage);
+        } else {
+            holder.productImage.setImageResource(R.drawable.placeholder_image);
+        }
         
+        // Set click listener to open product details
         holder.itemView.setOnClickListener(v -> {
-            // Navigate to product details activity
             Intent intent = new Intent(context, ProductDetailActivity.class);
             intent.putExtra("product_id", product.getId());
             context.startActivity(intent);
@@ -64,11 +67,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public int getItemCount() {
         return productList.size();
     }
-
-    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+    
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;
         TextView productName, productPrice, productCategory;
-
+        
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.productImage);
