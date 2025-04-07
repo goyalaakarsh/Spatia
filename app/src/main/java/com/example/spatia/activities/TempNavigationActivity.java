@@ -43,7 +43,8 @@ public class TempNavigationActivity extends AppCompatActivity {
 
         // Home button (stays in MainActivity)
         findViewById(R.id.btnHome).setOnClickListener(v -> {
-            Toast.makeText(TempNavigationActivity.this, "You are already at Home", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(TempNavigationActivity.this, HomeActivity.class);
+            startActivity(intent);
         });
 
         // Auth button

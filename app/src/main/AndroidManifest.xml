@@ -49,6 +49,9 @@
             android:name=".activities.WelcomeActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.Onboarding1Activity"
             android:exported="false" />
         <activity
