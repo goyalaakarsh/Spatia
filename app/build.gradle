@@ -2,12 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
-        // Change this to match the package name in google-services.json
         applicationId "com.android.spatia"
-        minSdkVersion 21
-        targetSdkVersion 33
+        minSdkVersion 24
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
@@ -21,38 +20,45 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
+    // buildFeatures {
+    //     viewBinding true
+    // }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     // Firebase
-    implementation platform('com.google.firebase:firebase-bom:32.2.3')
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
-    
-    // Gson for JSON processing - using a more compatible version
+
+    // Gson
     implementation 'com.google.code.gson:gson:2.10.1'
-    
-    // Retrofit for API calls - stick to stable versions
+
+    // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
-    
-    // Glide for image loading
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
 
-    // Cloudinary - try a different version
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+
+    // Cloudinary
     implementation 'com.cloudinary:cloudinary-android:2.2.0'
-    
-    // CircleImageView for rounded profile pictures
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // AR
+    implementation 'io.github.sceneview:sceneview:2.2.1'
+    implementation 'io.github.sceneview:arsceneview:2.2.1'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.6.2'
 }
