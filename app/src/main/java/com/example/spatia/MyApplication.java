@@ -13,7 +13,7 @@ public class MyApplication extends Application {
         config.put("cloud_name", "deuv3jnzu");
         config.put("api_key", "156814411182892");      
         config.put("api_secret", "ZOhx5zc5voT8gdtXJcueTFvyKQ4");
-        config.put("secure", "true"); // Force HTTPS URLs
+        config.put("secure", "true"); 
         MediaManager.init(this, config);
     }
 }

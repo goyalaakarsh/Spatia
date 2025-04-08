@@ -31,9 +31,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainContainerActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.AuthActivity"
             android:exported="false" />
         <activity
@@ -54,10 +51,15 @@
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
-
-<!--        <activity-->
-<!--            android:name=".activities.ArActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activities.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.OrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.OrderDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.Onboarding1Activity"
             android:exported="false" />

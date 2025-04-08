@@ -140,7 +140,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
             productIds.add(item.getProductId());
         }
 
-        // Fetch products from Firestore
         db.collection("products")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -179,9 +178,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
                     Product product = document.toObject(Product.class);
                     recommendedProducts.add(product);
                 }
-                
-                // Setup recommended products in a horizontal RecyclerView if needed
-                // This part depends on how you want to handle recommended products in your UI
             })
             .addOnFailureListener(e -> {
                 Log.w(TAG, "Error loading recommended products", e);
@@ -197,8 +193,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         emptyCartTextView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
         adapter.notifyDataSetChanged();
-        
-        // Update total price
+
         double totalPrice = calculateTotalPrice();
         totalPriceTextView.setText(currencyFormatter.format(totalPrice));
     }
@@ -239,7 +234,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         double totalPrice = calculateTotalPrice();
         totalPriceTextView.setText(currencyFormatter.format(totalPrice));
 
-        // Update in Firestore
         updateCartInFirestore();
     }
 
@@ -247,8 +241,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
     public void onItemRemoved(CartItem item) {
         // Remove item from local cart
         cartItems.remove(item);
-        
-        // Update UI
+
         if (cartItems.isEmpty()) {
             showEmptyCartView();
         } else {
@@ -257,7 +250,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
             totalPriceTextView.setText(currencyFormatter.format(totalPrice));
         }
 
-        // Update in Firestore
         updateCartInFirestore();
         
         Toast.makeText(this, "Item removed from cart", Toast.LENGTH_SHORT).show();
@@ -297,15 +289,8 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
             return;
         }
 
-        // Here you would typically navigate to a checkout activity
-        Toast.makeText(this, "Proceeding to checkout...", Toast.LENGTH_SHORT).show();
-        
-        // For now, just show a success message since checkout is not implemented
-        Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_LONG).show();
-        
-        // Clear the cart after successful checkout
-        cartItems.clear();
-        updateCartInFirestore();
-        showEmptyCartView();
+        // Navigate to checkout activity
+        Intent intent = new Intent(this, CheckoutActivity.class);
+        startActivity(intent);
     }
 }

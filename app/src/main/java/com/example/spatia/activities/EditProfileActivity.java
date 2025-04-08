@@ -33,6 +33,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -180,7 +181,13 @@ public class EditProfileActivity extends AppCompatActivity {
         nameEditText.setText(userProfile.getName());
         emailEditText.setText(userProfile.getEmail());
         phoneEditText.setText(userProfile.getPhone());
-        addressEditText.setText(userProfile.getAddress());
+        
+        // For address, use the helper method to display formatted address
+        if (userProfile.getAddress() != null) {
+            addressEditText.setText(userProfile.getFormattedAddress());
+        } else {
+            addressEditText.setText("");
+        }
 
         String profileImageUrl = userProfile.getProfileImageUrl();
         if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
@@ -232,11 +239,23 @@ public class EditProfileActivity extends AppCompatActivity {
     private void saveUserProfile() {
         String name = nameEditText.getText().toString().trim();
         String phone = phoneEditText.getText().toString().trim();
-        String address = addressEditText.getText().toString().trim();
+        String addressText = addressEditText.getText().toString().trim();
 
         userProfile.setName(name);
         userProfile.setPhone(phone);
-        userProfile.setAddress(address);
+        
+        // For address, we need to keep the Map structure if it exists
+        // Just update a simple "displayAddress" field or leave as is
+        if (userProfile.getAddress() == null) {
+            // If no existing address map, create a simple one with display text
+            Map<String, Object> addressMap = new HashMap<>();
+            addressMap.put("addressLine1", addressText);
+            userProfile.setAddress(addressMap);
+        } else if (!addressText.equals(userProfile.getFormattedAddress())) {
+            // If address text was changed, update the addressLine1 field
+            Map<String, Object> addressMap = userProfile.getAddress();
+            addressMap.put("addressLine1", addressText);
+        }
 
         if (isImageChanged && imageUri != null) {
             uploadImage();

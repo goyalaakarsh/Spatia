@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checkout"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/checkoutProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- Delivery Address Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery Address"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Address Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addressCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    tools:text="John Doe\n+91 9876543210\n123 Main St\nApt 4B\nMumbai, Maharashtra - 400001" />
+
+                <Button
+                    android:id="@+id/editAddressButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Address"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="@color/primary_dark" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Edit Address Form -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/editAddressCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Full Name"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phoneInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addressLine1Input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address Line 1"
+                        android:inputType="textPostalAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addressLine2Input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address Line 2 (Optional)"
+                        android:inputType="textPostalAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/cityInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="City"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        app:boxBackgroundColor="#FFFFFF"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/stateInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="State"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundColor="#FFFFFF"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pincodeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Pincode"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/saveAddressButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:text="Save Address"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="@color/primary_dark" />
+
+                    <Button
+                        android:id="@+id/cancelEditButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:text="Cancel"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#888888" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Order Items Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Items"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/checkoutItemsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Payment Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <RadioGroup
+                android:id="@+id/paymentMethodGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <RadioButton
+                    android:id="@+id/payOnDelivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pay on Delivery"
+                    android:checked="true"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/creditCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Credit/Debit Card"
+                    android:enabled="false"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/upi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UPI"
+                    android:enabled="false"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/netBanking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Net Banking"
+                    android:enabled="false" />
+            </RadioGroup>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Order Summary Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Summary"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Subtotal"
+                        android:textColor="#555555"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/subtotalValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#555555"
+                        android:textSize="14sp"
+                        tools:text="₹599" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Delivery Fee"
+                        android:textColor="#555555"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/deliveryFeeValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#555555"
+                        android:textSize="14sp"
+                        tools:text="₹49" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Total Amount"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/totalAmountValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/primary_dark"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="₹648" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Place Order Button -->
+        <Button
+            android:id="@+id/placeOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Place Order"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:padding="12dp"
+            app:backgroundTint="@color/primary_dark" />
+    </LinearLayout>
+</ScrollView>

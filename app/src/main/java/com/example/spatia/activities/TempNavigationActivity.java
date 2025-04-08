@@ -69,7 +69,8 @@ public class TempNavigationActivity extends AppCompatActivity {
 
         // Orders button
         findViewById(R.id.btnOrders).setOnClickListener(v -> {
-            Toast.makeText(TempNavigationActivity.this, "Orders feature coming soon", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(TempNavigationActivity.this, OrdersActivity.class);
+            startActivity(intent);
         });
 
         // Settings button

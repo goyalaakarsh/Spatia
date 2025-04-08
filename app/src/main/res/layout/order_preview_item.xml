@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/previewItemImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/placeholder_image" />
+
+        <TextView
+            android:id="@+id/previewItemQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:textSize="12sp"
+            android:layout_margin="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="×2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

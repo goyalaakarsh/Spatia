@@ -65,6 +65,11 @@ public class ProfileActivity extends AppCompatActivity {
             setupClickListeners();
             setupBottomNavigation();
             loadUserProfile();
+
+            // Add click listener for orders button
+            findViewById(R.id.orders_button).setOnClickListener(v -> {
+                startActivity(new Intent(ProfileActivity.this, OrdersActivity.class));
+            });
         } catch (Exception e) {
             Log.e(TAG, "Error in onCreate", e);
             Toast.makeText(this, "Error initializing profile: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -249,8 +254,13 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void navigateToCart() {
-        // Navigate to cart activity
-        Toast.makeText(this, "Cart feature coming soon", Toast.LENGTH_SHORT).show();
+        try {
+            Intent intent = new Intent(ProfileActivity.this, CartActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "Error navigating to Cart", e);
+            Toast.makeText(this, "Error opening cart: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void navigateToOrders() {

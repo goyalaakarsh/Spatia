@@ -1,6 +1,7 @@
 package com.example.spatia.model;
 
 import com.google.gson.annotations.SerializedName;
+import java.util.Map;
 
 /**
  * Model class for user data
@@ -16,7 +17,7 @@ public class User {
     private String email;
 
     @SerializedName("address")
-    private String address;
+    private Map<String, Object> address; // Changed from String to Map<String, Object>
 
     @SerializedName("phone")
     private String phone;
@@ -27,7 +28,7 @@ public class User {
     public User() {
     }
 
-    public User(String id, String name, String email, String address, String phone) {
+    public User(String id, String name, String email, Map<String, Object> address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -41,7 +42,7 @@ public class User {
         this.email = email;
         this.name = "";
         this.phone = "";
-        this.address = "";
+        this.address = null;
         this.profileImageUrl = "";
     }
     
@@ -70,11 +71,11 @@ public class User {
         this.email = email;
     }
 
-    public String getAddress() {
+    public Map<String, Object> getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Map<String, Object> address) {
         this.address = address;
     }
 
@@ -92,5 +93,42 @@ public class User {
 
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
+    }
+
+    // Helper method to get formatted address
+    public String getFormattedAddress() {
+        if (address == null || address.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        
+        // Safely append address components if they exist
+        if (address.containsKey("addressLine1")) {
+            sb.append(address.get("addressLine1"));
+        }
+        
+        if (address.containsKey("addressLine2") && address.get("addressLine2") != null 
+                && !address.get("addressLine2").toString().isEmpty()) {
+            if (sb.length() > 0) sb.append(", ");
+            sb.append(address.get("addressLine2"));
+        }
+        
+        if (address.containsKey("city")) {
+            if (sb.length() > 0) sb.append(", ");
+            sb.append(address.get("city"));
+        }
+        
+        if (address.containsKey("state")) {
+            if (sb.length() > 0) sb.append(", ");
+            sb.append(address.get("state"));
+        }
+        
+        if (address.containsKey("pincode")) {
+            if (sb.length() > 0) sb.append(" - ");
+            sb.append(address.get("pincode"));
+        }
+        
+        return sb.toString();
     }
 }
