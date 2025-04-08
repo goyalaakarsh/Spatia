@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class OrderDetailActivity extends AppCompatActivity {
+public class OrderDetailActivity extends BaseActivity {
 
     private static final String TAG = "OrderDetailActivity";
 
@@ -61,6 +61,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        setupNavigation();
 
         // Get order ID from intent
         orderId = getIntent().getStringExtra("order_id");
@@ -244,5 +246,9 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     private void showProgress(boolean show) {
         progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    protected String getActivityTitle() {
+        return "Order Details";
     }
 }

@@ -251,13 +251,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <!-- Include the bottom navigation -->
-    <include
-        android:id="@+id/bottomNav"
-        layout="@layout/bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    &lt;!&ndash; Include the bottom navigation &ndash;&gt;-->
+<!--    <include-->
+<!--        android:id="@+id/bottomNav"-->
+<!--        layout="@layout/bottom_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
     <!-- Include loading spinner -->
     <include

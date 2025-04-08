@@ -35,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
             
             // Set a timer to automatically navigate to Home
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                Intent intent = new Intent(WelcomeActivity.this, TempNavigationActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
             }, SPLASH_TIMEOUT);

@@ -66,37 +66,53 @@ public class NavbarHelper {
                     @Override
                     public void onClick(View v) {
                         Log.d(TAG, "Cart button clicked");
-                        try {
-                            Class<?> cartActivityClass = Class.forName("com.example.spatia.activities.CartActivity");
-                            Intent intent = new Intent(activity, cartActivityClass);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            activity.startActivity(intent);
-                        } catch (ClassNotFoundException e) {
-                            Toast.makeText(activity, "Cart feature coming soon", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "CartActivity not found", e);
-                        }
+                        navigateToActivity(activity, "com.example.spatia.activities.CartActivity", "Cart");
                     }
                 });
             } else {
                 Log.w(TAG, "Cart button view not found");
             }
             
-            // Configure profile button if it exists
+            // Configure profile button if it exists but only if we're not already on profile
             if (btnProfile != null) {
-                btnProfile.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d(TAG, "Profile button clicked");
-                        Intent intent = new Intent(activity, ProfileActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        activity.startActivity(intent);
-                    }
-                });
+                // Hide profile button if we're already on ProfileActivity
+                if (activity instanceof ProfileActivity) {
+                    btnProfile.setVisibility(View.INVISIBLE);
+                } else {
+                    btnProfile.setVisibility(View.VISIBLE);
+                    btnProfile.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Log.d(TAG, "Profile button clicked");
+                            Intent intent = new Intent(activity, ProfileActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            activity.startActivity(intent);
+                        }
+                    });
+                }
             } else {
                 Log.w(TAG, "Profile button view not found");
             }
         } catch (Exception e) {
             Log.e(TAG, "Error setting up navbar", e);
+        }
+    }
+    
+    /**
+     * Helper method to navigate to an activity using reflection
+     */
+    private static void navigateToActivity(Activity activity, String className, String featureName) {
+        try {
+            Class<?> targetClass = Class.forName(className);
+            Intent intent = new Intent(activity, targetClass);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(0, 0);
+        } catch (ClassNotFoundException e) {
+            Toast.makeText(activity, featureName + " feature coming soon", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, className + " not found", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Error navigating to " + className, e);
         }
     }
     

@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <include layout="@layout/navbar" />
+    <include
+        android:id="@+id/navbar"
+        layout="@layout/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Product Image (40% of screen) -->
     <ImageView

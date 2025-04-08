@@ -1,7 +1,6 @@
 package com.example.spatia.util;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,13 +30,14 @@ public class BottomNavHelper {
             String activityName = activity.getClass().getSimpleName();
             Log.d(TAG, "Setting up bottom navigation for: " + activityName);
             
+            // Select the right navigation item based on current activity
             if (activityName.equals("HomeActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_home);
             } else if (activityName.equals("CartActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_cart);
             } else if (activityName.equals("OrdersActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_orders);
-            } else if (activity instanceof ProfileActivity) {
+            } else if (activityName.equals("ProfileActivity")) {
                 navigationView.setSelectedItemId(R.id.navigation_profile);
             }
 
@@ -46,8 +46,11 @@ public class BottomNavHelper {
                 final int itemId = item.getItemId();
                 
                 // Don't do anything if we're already on this page
-                if (itemId == navigationView.getSelectedItemId()) {
-                    Log.d(TAG, "Already on selected page: " + itemId);
+                if ((itemId == R.id.navigation_home && activityName.equals("HomeActivity")) ||
+                    (itemId == R.id.navigation_cart && activityName.equals("CartActivity")) ||
+                    (itemId == R.id.navigation_orders && activityName.equals("OrdersActivity")) ||
+                    (itemId == R.id.navigation_profile && activityName.equals("ProfileActivity"))) {
+                    Log.d(TAG, "Already on selected page");
                     return true;
                 }
                 

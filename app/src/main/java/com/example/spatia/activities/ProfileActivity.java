@@ -25,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
 
     private static final String TAG = "ProfileActivity";
 
@@ -63,7 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             initializeViews();
             setupClickListeners();
-            setupBottomNavigation();
+            setupNavigation();
             loadUserProfile();
 
             // Add click listener for orders button
@@ -132,19 +132,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Log.e(TAG, "Error setting up click listeners", e);
-        }
-    }
-
-    private void setupBottomNavigation() {
-        try {
-            if (bottomNavigationView != null) {
-                // Use our helper class to set up the bottom navigation
-                BottomNavHelper.setupBottomNavigation(this, bottomNavigationView);
-            } else {
-                Log.w(TAG, "bottomNavigationView is null. Could not set up bottom navigation.");
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up bottom navigation", e);
         }
     }
 
@@ -297,5 +284,10 @@ public class ProfileActivity extends AppCompatActivity {
             // As a fallback, just finish this activity
             finish();
         }
+    }
+
+    @Override
+    protected String getActivityTitle() {
+        return "Profile";
     }
 }

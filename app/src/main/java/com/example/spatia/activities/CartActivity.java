@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class CartActivity extends AppCompatActivity implements CartAdapter.CartItemActionListener {
+public class CartActivity extends BaseActivity implements CartAdapter.CartItemActionListener {
 
     private static final String TAG = "CartActivity";
 
@@ -60,6 +60,8 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         currentUser = mAuth.getCurrentUser();
+
+        setupNavigation();
 
         if (currentUser == null) {
             Toast.makeText(this, "Please login to view your cart", Toast.LENGTH_SHORT).show();
@@ -292,5 +294,9 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartI
         // Navigate to checkout activity
         Intent intent = new Intent(this, CheckoutActivity.class);
         startActivity(intent);
+    }
+
+    protected String getActivityTitle() {
+        return "Cart";
     }
 }

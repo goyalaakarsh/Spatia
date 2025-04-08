@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductDetailActivity extends AppCompatActivity {
+public class ProductDetailActivity extends BaseActivity {
 
     private static final String TAG = "ProductDetailActivity";
     
@@ -63,6 +63,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         
         // Initialize views
         initViews();
+        setupNavigation();
         
         // Get product data from intent
         Intent intent = getIntent();
@@ -356,5 +357,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                         "Failed to create cart: " + e.getMessage(), 
                         Toast.LENGTH_SHORT).show();
             });
+    }
+
+    protected String getActivityTitle() {
+        return "Details";
     }
 }

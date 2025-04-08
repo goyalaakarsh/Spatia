@@ -45,7 +45,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class CheckoutActivity extends BaseActivity {
 
     private static final String TAG = "CheckoutActivity";
 
@@ -94,6 +94,8 @@ public class CheckoutActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+
+        setupNavigation();
 
         if (currentUser == null) {
             Toast.makeText(this, "Please login to continue", Toast.LENGTH_SHORT).show();
@@ -476,5 +478,9 @@ public class CheckoutActivity extends AppCompatActivity {
     private void showProgress(boolean show) {
         progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
         placeOrderButton.setEnabled(!show);
+    }
+
+    protected String getActivityTitle() {
+        return "Checkout";
     }
 }

@@ -23,11 +23,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     private Context context;
     private List<Product> productList;
     private NumberFormat currencyFormatter;
+    private OnProductClickListener listener;
 
-    public HomeAdapter(Context context, List<Product> productList) {
+    public interface OnProductClickListener {
+        void onProductClick(Product product);
+    }
+
+    public HomeAdapter(Context context, List<Product> productList, OnProductClickListener listener) {
         this.context = context;
         this.productList = productList;
         this.currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        this.listener = listener;
     }
 
     @NonNull
@@ -50,10 +56,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 .centerCrop()
                 .into(holder.productImage);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle item click (can be implemented later)
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(product);
             }
         });
     }

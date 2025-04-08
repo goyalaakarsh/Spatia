@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class OrdersActivity extends AppCompatActivity implements OrderAdapter.OrderClickListener {
+public class OrdersActivity extends BaseActivity implements OrderAdapter.OrderClickListener {
 
     private static final String TAG = "OrdersActivity";
 
@@ -54,6 +54,8 @@ public class OrdersActivity extends AppCompatActivity implements OrderAdapter.Or
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
+
+        setupNavigation();
 
         if (currentUser == null) {
             Toast.makeText(this, "Please login to view your orders", Toast.LENGTH_SHORT).show();
@@ -241,5 +243,9 @@ public class OrdersActivity extends AppCompatActivity implements OrderAdapter.Or
                 // or show a dialog with more detailed instructions
             }
         }
+    }
+
+    protected String getActivityTitle() {
+        return "Your Orders";
     }
 }

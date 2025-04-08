@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends BaseActivity {
 
     private static final String TAG = "EditProfileActivity";
 
@@ -70,6 +70,9 @@ public class EditProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         currentUser = mAuth.getCurrentUser();
+
+
+        setupNavigation();
 
         if (currentUser == null) {
             Toast.makeText(this, "No authenticated user found", Toast.LENGTH_SHORT).show();
@@ -137,11 +140,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void setupBottomNavigation() {
-        // Setup bottom navigation
-        BottomNavHelper.setupBottomNavigation(this, bottomNavigationView);
     }
 
     private void loadUserProfile() {
@@ -348,5 +346,9 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    protected String getActivityTitle() {
+        return "Edit Profile";
     }
 }
