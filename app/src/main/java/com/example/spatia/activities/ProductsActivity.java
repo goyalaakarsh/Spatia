@@ -156,6 +156,10 @@ public class ProductsActivity extends BaseActivity {
     }
     
     private void processProductsResult(@NonNull com.google.android.gms.tasks.Task<QuerySnapshot> task) {
+        Log.d(TAG, "processProductsResult: successful=" + task.isSuccessful()
+                + "  docs=" + (task.getResult() != null ? task.getResult().size() : "null")
+                + "  filterType=" + filterType
+                + "  category=" + category);
         progressBar.setVisibility(View.GONE);
 
         if (task.isSuccessful()) {

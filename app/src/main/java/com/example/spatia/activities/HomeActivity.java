@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +52,13 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.home);
 
         db = FirebaseFirestore.getInstance();
+
+        //Connecting the search page to the home page here
+        EditText searchBar = findViewById(R.id.searchBar);
+        searchBar.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+            startActivity(intent);
+        });
 
         // Initialize views
         recyclerViewFeatured = findViewById(R.id.recyclerViewFeatured);

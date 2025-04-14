@@ -36,6 +36,8 @@
         android:background="@drawable/search_bar_background"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="8dp"
+        android:clickable="true"
+        android:cursorVisible="false"
         android:hint="Search for furniture"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
