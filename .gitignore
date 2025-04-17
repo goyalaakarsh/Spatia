@@ -13,3 +13,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+/caches
+/.tmp
+/daemon
+/native
+/wrapper
+/.idea
+/.idea
