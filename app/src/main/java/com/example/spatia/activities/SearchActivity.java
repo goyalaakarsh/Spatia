@@ -48,6 +48,9 @@ public class SearchActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        setupNavigation();
+
+
         // UI references
         searchBar      = findViewById(R.id.searchBar);
         recyclerView   = findViewById(R.id.searchRecyclerView);
@@ -124,7 +127,6 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     protected String getActivityTitle() {
-        // Title shown in toolbar
         return "Search";
     }
 }
