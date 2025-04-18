@@ -260,7 +260,7 @@ public class AuthActivity extends Activity {
 
     private void onSuccessfulLogin() {
         // After successful login, navigate to MainActivity
-        Intent intent = new Intent(AuthActivity.this, ProductsActivity.class);
+        Intent intent = new Intent(AuthActivity.this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

@@ -8,7 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +16,7 @@ import com.example.spatia.adapters.CartAdapter;
 import com.example.spatia.adapters.ProductAdapter;
 import com.example.spatia.model.CartItem;
 import com.example.spatia.model.Product;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,7 +47,9 @@ public class CartActivity extends BaseActivity implements CartAdapter.CartItemAc
     private Map<Integer, Product> productMap;
     private TextView totalPriceTextView;
     private TextView emptyCartTextView;
-    private TextView swipeToCheckoutTextView;
+    private TextView cartItemsHeaderText;
+    private TextView recommendedHeaderText;
+    private MaterialButton checkoutButton;
     private ProgressBar progressBar;
 
     private NumberFormat currencyFormatter;
@@ -71,25 +73,43 @@ public class CartActivity extends BaseActivity implements CartAdapter.CartItemAc
             return;
         }
 
+        initViews();
+        setupRecyclerViews();
+        
+        loadCartItems();
+        loadRecommendedProducts();
+    }
+    
+    private void initViews() {
         recyclerView = findViewById(R.id.cartRecyclerView);
+        recommendedRecyclerView = findViewById(R.id.recommendedProductsRecyclerView);
         totalPriceTextView = findViewById(R.id.cartTotalPrice);
         emptyCartTextView = findViewById(R.id.emptyCartText);
-        swipeToCheckoutTextView = findViewById(R.id.swipeToCheckout);
+        cartItemsHeaderText = findViewById(R.id.cartItemsHeaderText);
+        recommendedHeaderText = findViewById(R.id.recommendedHeaderText);
+        checkoutButton = findViewById(R.id.swipeToCheckout);
         progressBar = findViewById(R.id.cartProgressBar);
-
+        
+        checkoutButton.setOnClickListener(v -> processCheckout());
+    }
+    
+    private void setupRecyclerViews() {
+        // Initialize data structures
         cartItems = new ArrayList<>();
         recommendedProducts = new ArrayList<>();
         productMap = new HashMap<>();
         currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("en", "IN")); // Using Indian Rupee format
 
+        // Setup cart items RecyclerView
         adapter = new CartAdapter(this, cartItems, productMap, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
-        swipeToCheckoutTextView.setOnClickListener(v -> processCheckout());
-
-        loadCartItems();
-        loadRecommendedProducts();
+        
+        // Setup recommended products RecyclerView
+        recommendedProductsAdapter = new ProductAdapter(this, recommendedProducts);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recommendedRecyclerView.setLayoutManager(layoutManager);
+        recommendedRecyclerView.setAdapter(recommendedProductsAdapter);
     }
 
     private void loadCartItems() {
@@ -180,10 +200,26 @@ public class CartActivity extends BaseActivity implements CartAdapter.CartItemAc
                     Product product = document.toObject(Product.class);
                     recommendedProducts.add(product);
                 }
+                
+                // Update the recommended products UI
+                updateRecommendedProductsUI();
             })
             .addOnFailureListener(e -> {
                 Log.w(TAG, "Error loading recommended products", e);
+                recommendedHeaderText.setVisibility(View.GONE);
+                recommendedRecyclerView.setVisibility(View.GONE);
             });
+    }
+    
+    private void updateRecommendedProductsUI() {
+        if (recommendedProducts.isEmpty()) {
+            recommendedHeaderText.setVisibility(View.GONE);
+            recommendedRecyclerView.setVisibility(View.GONE);
+        } else {
+            recommendedHeaderText.setVisibility(View.VISIBLE);
+            recommendedRecyclerView.setVisibility(View.VISIBLE);
+            recommendedProductsAdapter.notifyDataSetChanged();
+        }
     }
 
     private void updateCartUI() {
@@ -193,6 +229,7 @@ public class CartActivity extends BaseActivity implements CartAdapter.CartItemAc
         }
 
         emptyCartTextView.setVisibility(View.GONE);
+        cartItemsHeaderText.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.VISIBLE);
         adapter.notifyDataSetChanged();
 
@@ -212,6 +249,7 @@ public class CartActivity extends BaseActivity implements CartAdapter.CartItemAc
     }
 
     private void showEmptyCartView() {
+        cartItemsHeaderText.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         emptyCartTextView.setVisibility(View.VISIBLE);
         totalPriceTextView.setText(currencyFormatter.format(0));

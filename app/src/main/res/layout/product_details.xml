@@ -24,21 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- View in Room (AR) Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_view_in_room"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="View in Room"
-        android:textColor="#FFFFFF"
-        app:icon="@drawable/ic_ar_3d"
-        app:iconTint="#FFFFFF"
-        app:backgroundTint="#80000000"
-        android:alpha="0.9"
-        app:cornerRadius="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <!-- Guideline at 40% height -->
     <androidx.constraintlayout.widget.Guideline

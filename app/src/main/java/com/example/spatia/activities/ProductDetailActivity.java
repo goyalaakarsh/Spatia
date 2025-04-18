@@ -93,7 +93,6 @@ public class ProductDetailActivity extends BaseActivity {
         reviewCount = findViewById(R.id.review_count);
         productRating = findViewById(R.id.product_rating);
         addToCartButton = findViewById(R.id.btn_add_to_cart);
-        viewInRoomButton = findViewById(R.id.btn_view_in_room);
         similarProductsRecycler = findViewById(R.id.similar_products_recycler);
         tabDescription = findViewById(R.id.tab_description);
         tabMaterials = findViewById(R.id.tab_materials);
@@ -139,16 +138,7 @@ public class ProductDetailActivity extends BaseActivity {
                 addToCart(currentProduct.getId(), quantity);
             }
         });
-        
-        // View in Room (AR) button
-//        viewInRoomButton.setOnClickListener(v -> {
-//            if (currentProduct != null && currentProduct.hasArModel()) {
-//                // Launch AR view with the product's 3D model
-//                ArUtils.launchArView(this, currentProduct.getModelUrl());
-//            } else {
-//                Toast.makeText(this, "3D model not available for this product", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
     }
     
     private void loadProductDetails(int productId) {

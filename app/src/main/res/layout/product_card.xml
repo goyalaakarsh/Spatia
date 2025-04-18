@@ -60,6 +60,22 @@
                 android:layout_marginTop="4dp"
                 android:text="Category"
                 android:textSize="12sp" />
+                
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addToCartButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="Add to Cart"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                app:cornerRadius="4dp"
+                app:backgroundTint="#146C43"
+                app:icon="@android:drawable/ic_menu_add"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="16dp"
+                app:iconTint="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -56,17 +56,24 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
+            android:padding="2dp"
+            android:gravity="center_vertical"
             app:layout_constraintStart_toEndOf="@+id/cartItemImage"
             app:layout_constraintTop_toBottomOf="@+id/cartItemPrice">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/decrementButton"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:text="-"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:cornerRadius="18dp"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#146C43" />
 
             <TextView
                 android:id="@+id/quantityText"
@@ -78,14 +85,19 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/incrementButton"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:text="+"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:cornerRadius="18dp"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#146C43" />
         </LinearLayout>
 
         <ImageButton
@@ -98,6 +110,7 @@
             android:minHeight="48dp"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_delete"
+            android:tint="#D32F2F"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
